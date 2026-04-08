@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS zakat_calculations (
+    id TEXT NOT NULL PRIMARY KEY,
+    inventory_value REAL NOT NULL,
+    cash_balance REAL NOT NULL,
+    receivables REAL NOT NULL DEFAULT 0,
+    liabilities REAL NOT NULL DEFAULT 0,
+    nisab_threshold REAL NOT NULL,
+    zakatable_amount REAL NOT NULL,
+    zakat_due REAL NOT NULL,
+    gold_rate REAL NOT NULL,
+    store_id TEXT NOT NULL,
+    calculated_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_zakat_store ON zakat_calculations(store_id);
+
+selectByStoreId:
+SELECT * FROM zakat_calculations WHERE store_id = ? ORDER BY calculated_at DESC;
+
+selectById:
+SELECT * FROM zakat_calculations WHERE id = ?;
+
+insert:
+INSERT OR REPLACE INTO zakat_calculations (id, inventory_value, cash_balance, receivables, liabilities, nisab_threshold, zakatable_amount, zakat_due, gold_rate, store_id, calculated_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
