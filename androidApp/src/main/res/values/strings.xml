@@ -69,4 +69,19 @@
     <string name="pos_no_sales">Нет продаж</string>
     <string name="pos_items">товаров</string>
     <string name="pos_refunded">Возврат</string>
+    <!-- Customers -->
+    <string name="customer_add">Добавить клиента</string>
+    <string name="customer_detail">Клиент</string>
+    <string name="customer_search_hint">Поиск по имени или телефону…</string>
+    <string name="customer_empty">Нет клиентов</string>
+    <string name="customer_not_found">Клиент не найден</string>
+    <string name="customer_name">Имя</string>
+    <string name="customer_phone">Телефон</string>
+    <string name="customer_email">Email</string>
+    <string name="customer_notes">Заметки</string>
+    <string name="customer_total_spent">Всего потрачено</string>
+    <string name="customer_visits">визитов</string>
+    <string name="customer_purchases">История покупок</string>
+    <string name="customer_no_purchases">Нет покупок</string>
+    <string name="pos_select_customer">Выбрать клиента</string>
 </resources>

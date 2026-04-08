@@ -69,4 +69,19 @@
     <string name="pos_no_sales">Фурӯш нест</string>
     <string name="pos_items">мол</string>
     <string name="pos_refunded">Баргардонидан</string>
+    <!-- Customers -->
+    <string name="customer_add">Илова кардани мизоҷ</string>
+    <string name="customer_detail">Мизоҷ</string>
+    <string name="customer_search_hint">Ҷустуҷӯ аз рӯи ном ё телефон…</string>
+    <string name="customer_empty">Мизоҷон нест</string>
+    <string name="customer_not_found">Мизоҷ ёфт нашуд</string>
+    <string name="customer_name">Ном</string>
+    <string name="customer_phone">Телефон</string>
+    <string name="customer_email">Email</string>
+    <string name="customer_notes">Қайдҳо</string>
+    <string name="customer_total_spent">Ҳамагӣ харҷ</string>
+    <string name="customer_visits">ташриф</string>
+    <string name="customer_purchases">Таърихи харидҳо</string>
+    <string name="customer_no_purchases">Харид нест</string>
+    <string name="pos_select_customer">Интихоби мизоҷ</string>
 </resources>

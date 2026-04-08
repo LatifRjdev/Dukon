@@ -6,10 +6,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.LaunchedEffect
 import com.dokonpro.android.ui.MainScreen
 import com.dokonpro.android.ui.auth.OtpScreen
 import com.dokonpro.android.ui.auth.PhoneInputScreen
 import com.dokonpro.android.ui.auth.RegisterScreen
+import com.dokonpro.android.ui.customers.AddEditCustomerScreen
+import com.dokonpro.android.ui.customers.CustomerDetailScreen
+import com.dokonpro.android.ui.customers.CustomerListScreen
 import com.dokonpro.android.ui.pos.CheckoutScreen
 import com.dokonpro.android.ui.pos.POSScreen
 import com.dokonpro.android.ui.pos.ReceiptScreen
@@ -19,6 +23,7 @@ import com.dokonpro.android.ui.products.ProductListScreen
 import com.dokonpro.android.ui.sales.SalesHistoryScreen
 import com.dokonpro.android.viewmodel.AuthStep
 import com.dokonpro.android.viewmodel.AuthViewModel
+import com.dokonpro.android.viewmodel.CustomerViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -33,6 +38,9 @@ object Routes {
     const val CHECKOUT = "pos/checkout"
     const val RECEIPT = "pos/receipt"
     const val SALES_HISTORY = "sales/history"
+    const val CUSTOMERS = "customers"
+    const val CUSTOMER_DETAIL = "customers/{customerId}"
+    const val ADD_CUSTOMER = "customers/add"
 }
 
 @Composable
@@ -183,6 +191,41 @@ fun AppNavigation() {
             SalesHistoryScreen(
                 sales = sales,
                 onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.CUSTOMERS) {
+            val viewModel: CustomerViewModel = koinViewModel()
+            val state by viewModel.listState.collectAsStateWithLifecycle()
+            CustomerListScreen(
+                customers = state.customers,
+                searchQuery = state.searchQuery,
+                isLoading = state.isLoading,
+                onSearchChange = viewModel::onSearchChange,
+                onCustomerClick = { id -> navController.navigate("customers/$id") },
+                onAddClick = { navController.navigate(Routes.ADD_CUSTOMER) }
+            )
+        }
+        composable(Routes.ADD_CUSTOMER) {
+            val viewModel: CustomerViewModel = koinViewModel()
+            AddEditCustomerScreen(
+                onSave = { name, phone, email, notes ->
+                    viewModel.addCustomer(name, phone, email, notes)
+                    navController.popBackStack()
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.CUSTOMER_DETAIL) { backStackEntry ->
+            val customerId = backStackEntry.arguments?.getString("customerId") ?: return@composable
+            val viewModel: CustomerViewModel = koinViewModel()
+            val state by viewModel.detailState.collectAsStateWithLifecycle()
+            LaunchedEffect(customerId) { viewModel.loadCustomerDetail(customerId) }
+            CustomerDetailScreen(
+                customer = state.customer,
+                purchases = state.purchases,
+                isLoading = state.isLoading,
+                onBack = { navController.popBackStack() },
+                onEdit = { /* edit flow later */ }
             )
         }
     }

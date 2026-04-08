@@ -24,6 +24,7 @@ data class POSState(
     val searchQuery: String = "",
     val saleDiscount: Double = 0.0,
     val paymentMethod: PaymentMethod = PaymentMethod.CASH,
+    val selectedCustomerId: String? = null,
     val isLoading: Boolean = false,
     val error: String? = null,
     val completedSale: Sale? = null
@@ -103,12 +104,16 @@ class POSViewModel(
         _state.value = _state.value.copy(paymentMethod = method)
     }
 
+    fun setCustomer(customerId: String?) {
+        _state.value = _state.value.copy(selectedCustomerId = customerId)
+    }
+
     fun checkout() {
         val s = _state.value
         if (s.cart.items.isEmpty()) return
         viewModelScope.launch {
             _state.value = s.copy(isLoading = true, error = null)
-            completeSale(storeId, s.cart, s.saleDiscount, s.paymentMethod)
+            completeSale(storeId, s.cart, s.saleDiscount, s.paymentMethod, s.selectedCustomerId)
                 .onSuccess { sale ->
                     _state.value = _state.value.copy(
                         isLoading = false,
