@@ -129,3 +129,20 @@ model SaleItem {
 
   @@map("sale_items")
 }
+
+model Customer {
+  id         String   @id @default(uuid())
+  name       String
+  phone      String?
+  email      String?
+  notes      String?
+  totalSpent Float    @default(0) @map("total_spent")
+  visitCount Int      @default(0) @map("visit_count")
+  storeId    String   @map("store_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([storeId])
+  @@index([storeId, phone])
+  @@map("customers")
+}
