@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS transactions (
+    id TEXT NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL,
+    amount REAL NOT NULL,
+    description TEXT,
+    category_id TEXT,
+    store_id TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_transactions_store ON transactions(store_id);
+CREATE INDEX IF NOT EXISTS idx_transactions_store_type ON transactions(store_id, type);
+CREATE INDEX IF NOT EXISTS idx_transactions_store_date ON transactions(store_id, created_at);
+
+selectByStoreId:
+SELECT * FROM transactions WHERE store_id = ? ORDER BY created_at DESC;
+
+selectByStoreIdAndType:
+SELECT * FROM transactions WHERE store_id = ? AND type = ? ORDER BY created_at DESC;
+
+selectByStoreIdAndDateRange:
+SELECT * FROM transactions WHERE store_id = ? AND created_at >= ? AND created_at <= ? ORDER BY created_at DESC;
+
+sumByTypeAndDateRange:
+SELECT COALESCE(SUM(amount), 0.0) FROM transactions WHERE store_id = ? AND type = ? AND created_at >= ? AND created_at <= ?;
+
+insert:
+INSERT OR REPLACE INTO transactions (id, type, amount, description, category_id, store_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?);

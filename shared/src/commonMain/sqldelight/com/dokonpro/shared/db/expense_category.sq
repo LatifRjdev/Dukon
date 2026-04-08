@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS expense_categories (
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    store_id TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_expense_categories_store ON expense_categories(store_id);
+
+selectByStoreId:
+SELECT * FROM expense_categories WHERE store_id = ? ORDER BY name ASC;
+
+insertOrReplace:
+INSERT OR REPLACE INTO expense_categories (id, name, store_id, created_at) VALUES (?, ?, ?, ?);
