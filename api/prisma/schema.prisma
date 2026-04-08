@@ -61,3 +61,36 @@ model OtpCode {
   @@index([phone, code])
   @@map("otp_codes")
 }
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String
+  storeId   String    @map("store_id")
+  createdAt DateTime  @default(now()) @map("created_at")
+  products  Product[]
+
+  @@index([storeId])
+  @@map("categories")
+}
+
+model Product {
+  id         String    @id @default(uuid())
+  name       String
+  barcode    String?
+  sku        String?
+  price      Float
+  costPrice  Float     @default(0) @map("cost_price")
+  quantity   Int       @default(0)
+  unit       String    @default("шт")
+  categoryId String?   @map("category_id")
+  category   Category? @relation(fields: [categoryId], references: [id])
+  imageUrl   String?   @map("image_url")
+  storeId    String    @map("store_id")
+  isDeleted  Boolean   @default(false) @map("is_deleted")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  @@index([storeId])
+  @@index([storeId, barcode])
+  @@map("products")
+}
