@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ДоконПро</string>
+    <string name="loading">Загрузка...</string>
+    <string name="error_generic">Произошла ошибка</string>
+    <string name="retry">Повторить</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="search">Поиск</string>
+    <string name="back">Назад</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="offline">Нет подключения</string>
+    <string name="syncing">Синхронизация...</string>
+    <string name="nav_pos">Касса</string>
+    <string name="nav_products">Товары</string>
+    <string name="nav_sales">Продажи</string>
+    <string name="nav_customers">Клиенты</string>
+    <string name="nav_finance">Финансы</string>
+    <string name="nav_settings">Настройки</string>
+</resources>

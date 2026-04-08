@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ДуконПро</string>
+    <string name="loading">Боргирӣ...</string>
+    <string name="error_generic">Хатогӣ рух дод</string>
+    <string name="retry">Такрор</string>
+    <string name="cancel">Бекор</string>
+    <string name="save">Нигоҳ доштан</string>
+    <string name="delete">Нест кардан</string>
+    <string name="search">Ҷустуҷӯ</string>
+    <string name="back">Бозгашт</string>
+    <string name="confirm">Тасдиқ</string>
+    <string name="offline">Пайвастшавӣ нест</string>
+    <string name="syncing">Ҳамоҳангсозӣ...</string>
+    <string name="nav_pos">Касса</string>
+    <string name="nav_products">Молҳо</string>
+    <string name="nav_sales">Фурӯш</string>
+    <string name="nav_customers">Мизоҷон</string>
+    <string name="nav_finance">Молия</string>
+    <string name="nav_settings">Танзимот</string>
+</resources>
