@@ -99,4 +99,17 @@
     <string name="finance_no_transactions">Амалиёт нест</string>
     <string name="finance_income">Даромад</string>
     <string name="finance_expense">Хароҷ</string>
+    <!-- Staff -->
+    <string name="staff_title">Кормандон</string>
+    <string name="staff_add">Илова кардани корманд</string>
+    <string name="staff_detail">Корманд</string>
+    <string name="staff_empty">Корманд нест</string>
+    <string name="staff_phone">Телефони корманд</string>
+    <string name="staff_name">Номи корманд</string>
+    <string name="staff_role">Нақш</string>
+    <string name="staff_owner">Соҳиб</string>
+    <string name="staff_manager">Мудир</string>
+    <string name="staff_cashier">Кассир</string>
+    <string name="staff_change_role">Иваз кардани нақш</string>
+    <string name="staff_deactivate">Ғайрифаъол кардан</string>
 </resources>

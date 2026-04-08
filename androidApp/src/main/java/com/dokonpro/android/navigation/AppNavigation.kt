@@ -18,6 +18,9 @@ import com.dokonpro.android.ui.finance.AddExpenseScreen
 import com.dokonpro.android.ui.finance.FinanceDashboardScreen
 import com.dokonpro.android.ui.finance.ReportScreen
 import com.dokonpro.android.ui.finance.TransactionListScreen
+import com.dokonpro.android.ui.staff.AddStaffScreen
+import com.dokonpro.android.ui.staff.StaffDetailScreen
+import com.dokonpro.android.ui.staff.StaffListScreen
 import com.dokonpro.android.ui.pos.CheckoutScreen
 import com.dokonpro.android.ui.pos.POSScreen
 import com.dokonpro.android.ui.pos.ReceiptScreen
@@ -31,6 +34,7 @@ import com.dokonpro.android.viewmodel.CustomerViewModel
 import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
+import com.dokonpro.android.viewmodel.StaffViewModel
 import org.koin.androidx.compose.koinViewModel
 
 object Routes {
@@ -50,6 +54,9 @@ object Routes {
     const val FINANCE_TRANSACTIONS = "finance/transactions"
     const val FINANCE_ADD_EXPENSE = "finance/add-expense"
     const val FINANCE_REPORT = "finance/report"
+    const val STAFF_LIST = "staff"
+    const val STAFF_DETAIL = "staff/{staffId}"
+    const val ADD_STAFF = "staff/add"
 }
 
 @Composable
@@ -277,6 +284,38 @@ fun AppNavigation() {
             val state by viewModel.state.collectAsStateWithLifecycle()
             ReportScreen(
                 report = state.report,
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.STAFF_LIST) {
+            val viewModel: StaffViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            StaffListScreen(
+                staff = state.staff,
+                isLoading = state.isLoading,
+                onStaffClick = { id -> navController.navigate("staff/$id") },
+                onAddClick = { navController.navigate(Routes.ADD_STAFF) }
+            )
+        }
+        composable(Routes.ADD_STAFF) {
+            val viewModel: StaffViewModel = koinViewModel()
+            AddStaffScreen(
+                onSave = { phone, name, role ->
+                    viewModel.addNewStaff(phone, name, role)
+                    navController.popBackStack()
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.STAFF_DETAIL) { backStackEntry ->
+            val staffId = backStackEntry.arguments?.getString("staffId") ?: return@composable
+            val viewModel: StaffViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            val staff = state.staff.find { it.id == staffId }
+            StaffDetailScreen(
+                staff = staff,
+                onChangeRole = { role -> viewModel.changeRole(staffId, role) },
+                onDeactivate = { viewModel.removeStaff(staffId); navController.popBackStack() },
                 onBack = { navController.popBackStack() }
             )
         }

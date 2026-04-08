@@ -99,4 +99,17 @@
     <string name="finance_no_transactions">Нет операций</string>
     <string name="finance_income">Доход</string>
     <string name="finance_expense">Расход</string>
+    <!-- Staff -->
+    <string name="staff_title">Сотрудники</string>
+    <string name="staff_add">Добавить сотрудника</string>
+    <string name="staff_detail">Сотрудник</string>
+    <string name="staff_empty">Нет сотрудников</string>
+    <string name="staff_phone">Телефон сотрудника</string>
+    <string name="staff_name">Имя сотрудника</string>
+    <string name="staff_role">Роль</string>
+    <string name="staff_owner">Владелец</string>
+    <string name="staff_manager">Менеджер</string>
+    <string name="staff_cashier">Кассир</string>
+    <string name="staff_change_role">Изменить роль</string>
+    <string name="staff_deactivate">Деактивировать</string>
 </resources>
