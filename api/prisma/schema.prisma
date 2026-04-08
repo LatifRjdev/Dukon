@@ -49,3 +49,15 @@ model UserStore {
   @@unique([userId, storeId])
   @@map("user_stores")
 }
+
+model OtpCode {
+  id        String   @id @default(uuid())
+  phone     String
+  code      String
+  expiresAt DateTime @map("expires_at")
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([phone, code])
+  @@map("otp_codes")
+}
