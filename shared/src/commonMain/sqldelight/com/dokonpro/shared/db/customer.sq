@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS customers (
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    phone TEXT,
+    email TEXT,
+    notes TEXT,
+    total_spent REAL NOT NULL DEFAULT 0,
+    visit_count INTEGER NOT NULL DEFAULT 0,
+    store_id TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_customers_store_id ON customers(store_id);
+CREATE INDEX IF NOT EXISTS idx_customers_store_phone ON customers(store_id, phone);
+
+selectByStoreId:
+SELECT * FROM customers WHERE store_id = ? ORDER BY name ASC;
+
+searchByNameOrPhone:
+SELECT * FROM customers
+WHERE store_id = ? AND (name LIKE '%' || ? || '%' OR phone LIKE '%' || ? || '%')
+ORDER BY name ASC;
+
+selectById:
+SELECT * FROM customers WHERE id = ?;
+
+insertOrReplace:
+INSERT OR REPLACE INTO customers (id, name, phone, email, notes, total_spent, visit_count, store_id, created_at, updated_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteById:
+DELETE FROM customers WHERE id = ?;
