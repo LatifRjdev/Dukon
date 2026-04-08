@@ -84,4 +84,19 @@
     <string name="customer_purchases">Таърихи харидҳо</string>
     <string name="customer_no_purchases">Харид нест</string>
     <string name="pos_select_customer">Интихоби мизоҷ</string>
+    <!-- Finance -->
+    <string name="finance_revenue">Даромад</string>
+    <string name="finance_expenses">Хароҷот</string>
+    <string name="finance_profit">Фоида</string>
+    <string name="finance_today">Рӯз</string>
+    <string name="finance_week">Ҳафта</string>
+    <string name="finance_month">Моҳ</string>
+    <string name="finance_transactions">Ҳамаи амалиётҳо</string>
+    <string name="finance_add_expense">Илова кардани хароҷ</string>
+    <string name="finance_reports">Ҳисобот</string>
+    <string name="finance_amount">Маблағ</string>
+    <string name="finance_description">Тавсиф</string>
+    <string name="finance_no_transactions">Амалиёт нест</string>
+    <string name="finance_income">Даромад</string>
+    <string name="finance_expense">Хароҷ</string>
 </resources>

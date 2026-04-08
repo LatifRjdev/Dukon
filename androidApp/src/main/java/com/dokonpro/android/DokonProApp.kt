@@ -6,6 +6,7 @@ import com.dokonpro.shared.data.local.TokenStorage
 import com.dokonpro.shared.di.sharedModule
 import com.dokonpro.android.viewmodel.AuthViewModel
 import com.dokonpro.android.viewmodel.CustomerViewModel
+import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import org.koin.android.ext.koin.androidContext
@@ -29,6 +30,7 @@ class DokonProApp : Application() {
                     viewModel { ProductViewModel(get(), get(), get(), get(), get(), get(), "default-store") }
                     viewModel { POSViewModel(get(), get(), get(), get(), get(), get(), get(), "default-store") }
                     viewModel { CustomerViewModel(get(), get(), get(), get(), get(), "default-store") }
+                    viewModel { FinanceViewModel(get(), get(), get(), get(), "default-store") }
                 }
             )
         }

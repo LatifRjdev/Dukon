@@ -14,6 +14,10 @@ import com.dokonpro.android.ui.auth.RegisterScreen
 import com.dokonpro.android.ui.customers.AddEditCustomerScreen
 import com.dokonpro.android.ui.customers.CustomerDetailScreen
 import com.dokonpro.android.ui.customers.CustomerListScreen
+import com.dokonpro.android.ui.finance.AddExpenseScreen
+import com.dokonpro.android.ui.finance.FinanceDashboardScreen
+import com.dokonpro.android.ui.finance.ReportScreen
+import com.dokonpro.android.ui.finance.TransactionListScreen
 import com.dokonpro.android.ui.pos.CheckoutScreen
 import com.dokonpro.android.ui.pos.POSScreen
 import com.dokonpro.android.ui.pos.ReceiptScreen
@@ -24,6 +28,7 @@ import com.dokonpro.android.ui.sales.SalesHistoryScreen
 import com.dokonpro.android.viewmodel.AuthStep
 import com.dokonpro.android.viewmodel.AuthViewModel
 import com.dokonpro.android.viewmodel.CustomerViewModel
+import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -41,6 +46,10 @@ object Routes {
     const val CUSTOMERS = "customers"
     const val CUSTOMER_DETAIL = "customers/{customerId}"
     const val ADD_CUSTOMER = "customers/add"
+    const val FINANCE_DASHBOARD = "finance"
+    const val FINANCE_TRANSACTIONS = "finance/transactions"
+    const val FINANCE_ADD_EXPENSE = "finance/add-expense"
+    const val FINANCE_REPORT = "finance/report"
 }
 
 @Composable
@@ -226,6 +235,49 @@ fun AppNavigation() {
                 isLoading = state.isLoading,
                 onBack = { navController.popBackStack() },
                 onEdit = { /* edit flow later */ }
+            )
+        }
+        composable(Routes.FINANCE_DASHBOARD) {
+            val viewModel: FinanceViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            FinanceDashboardScreen(
+                summary = state.summary,
+                transactions = state.transactions,
+                report = state.report,
+                selectedPeriod = state.selectedPeriod,
+                isLoading = state.isLoading,
+                onPeriodChange = viewModel::selectPeriod,
+                onTransactionsClick = { navController.navigate(Routes.FINANCE_TRANSACTIONS) },
+                onAddExpenseClick = { navController.navigate(Routes.FINANCE_ADD_EXPENSE) },
+                onReportClick = { navController.navigate(Routes.FINANCE_REPORT) }
+            )
+        }
+        composable(Routes.FINANCE_TRANSACTIONS) {
+            val viewModel: FinanceViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            TransactionListScreen(
+                transactions = state.transactions,
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.FINANCE_ADD_EXPENSE) {
+            val viewModel: FinanceViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            AddExpenseScreen(
+                isLoading = state.isLoading,
+                onSave = { amount, description, categoryId ->
+                    viewModel.submitExpense(amount, description, categoryId)
+                    navController.popBackStack()
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.FINANCE_REPORT) {
+            val viewModel: FinanceViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            ReportScreen(
+                report = state.report,
+                onBack = { navController.popBackStack() }
             )
         }
     }

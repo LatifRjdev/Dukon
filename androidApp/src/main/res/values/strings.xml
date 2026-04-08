@@ -84,4 +84,19 @@
     <string name="customer_purchases">История покупок</string>
     <string name="customer_no_purchases">Нет покупок</string>
     <string name="pos_select_customer">Выбрать клиента</string>
+    <!-- Finance -->
+    <string name="finance_revenue">Выручка</string>
+    <string name="finance_expenses">Расходы</string>
+    <string name="finance_profit">Прибыль</string>
+    <string name="finance_today">День</string>
+    <string name="finance_week">Неделя</string>
+    <string name="finance_month">Месяц</string>
+    <string name="finance_transactions">Все операции</string>
+    <string name="finance_add_expense">Добавить расход</string>
+    <string name="finance_reports">Отчёт</string>
+    <string name="finance_amount">Сумма</string>
+    <string name="finance_description">Описание</string>
+    <string name="finance_no_transactions">Нет операций</string>
+    <string name="finance_income">Доход</string>
+    <string name="finance_expense">Расход</string>
 </resources>
