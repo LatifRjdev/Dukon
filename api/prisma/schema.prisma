@@ -178,3 +178,30 @@ model Transaction {
   @@index([storeId, createdAt])
   @@map("transactions")
 }
+
+model ZakatConfig {
+  id                String   @id @default(uuid())
+  storeId           String   @unique @map("store_id")
+  goldRatePerGram   Float    @default(750) @map("gold_rate_per_gram")
+  silverRatePerGram Float    @default(10) @map("silver_rate_per_gram")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  @@map("zakat_configs")
+}
+
+model ZakatCalculation {
+  id              String   @id @default(uuid())
+  inventoryValue  Float    @map("inventory_value")
+  cashBalance     Float    @map("cash_balance")
+  receivables     Float    @default(0)
+  liabilities     Float    @default(0)
+  nisabThreshold  Float    @map("nisab_threshold")
+  zakatableAmount Float    @map("zakatable_amount")
+  zakatDue        Float    @map("zakat_due")
+  goldRate        Float    @map("gold_rate")
+  storeId         String   @map("store_id")
+  calculatedAt    DateTime @default(now()) @map("calculated_at")
+
+  @@index([storeId])
+  @@map("zakat_calculations")
+}
