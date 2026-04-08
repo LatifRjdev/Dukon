@@ -94,3 +94,38 @@ model Product {
   @@index([storeId, barcode])
   @@map("products")
 }
+
+enum PaymentMethod {
+  CASH
+  CARD
+  MIXED
+}
+
+model Sale {
+  id            String        @id @default(uuid())
+  totalAmount   Float         @map("total_amount")
+  discount      Float         @default(0)
+  paymentMethod PaymentMethod @default(CASH) @map("payment_method")
+  customerId    String?       @map("customer_id")
+  storeId       String        @map("store_id")
+  isRefunded    Boolean       @default(false) @map("is_refunded")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  items         SaleItem[]
+
+  @@index([storeId])
+  @@index([storeId, createdAt])
+  @@map("sales")
+}
+
+model SaleItem {
+  id        String @id @default(uuid())
+  saleId    String @map("sale_id")
+  sale      Sale   @relation(fields: [saleId], references: [id])
+  productId String @map("product_id")
+  name      String
+  quantity  Int
+  price     Float
+  discount  Float  @default(0)
+
+  @@map("sale_items")
+}
