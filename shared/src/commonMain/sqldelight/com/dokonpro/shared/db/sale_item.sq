@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS sale_items (
+    id TEXT NOT NULL PRIMARY KEY,
+    sale_id TEXT NOT NULL,
+    product_id TEXT NOT NULL,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    price REAL NOT NULL,
+    discount REAL NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_sale_items_sale_id ON sale_items(sale_id);
+
+selectBySaleId:
+SELECT * FROM sale_items WHERE sale_id = ?;
+
+insert:
+INSERT OR REPLACE INTO sale_items (id, sale_id, product_id, name, quantity, price, discount)
+VALUES (?, ?, ?, ?, ?, ?, ?);

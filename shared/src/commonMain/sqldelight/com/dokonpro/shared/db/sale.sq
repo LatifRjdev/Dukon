@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS sales (
+    id TEXT NOT NULL PRIMARY KEY,
+    total_amount REAL NOT NULL,
+    discount REAL NOT NULL DEFAULT 0,
+    payment_method TEXT NOT NULL DEFAULT 'CASH',
+    customer_id TEXT,
+    store_id TEXT NOT NULL,
+    is_refunded INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_sales_store_id ON sales(store_id);
+CREATE INDEX IF NOT EXISTS idx_sales_store_date ON sales(store_id, created_at);
+
+selectByStoreId:
+SELECT * FROM sales WHERE store_id = ? ORDER BY created_at DESC;
+
+selectByStoreIdWithDateRange:
+SELECT * FROM sales WHERE store_id = ? AND created_at >= ? AND created_at <= ? ORDER BY created_at DESC;
+
+selectById:
+SELECT * FROM sales WHERE id = ?;
+
+insert:
+INSERT OR REPLACE INTO sales (id, total_amount, discount, payment_method, customer_id, store_id, is_refunded, created_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+markRefunded:
+UPDATE sales SET is_refunded = 1 WHERE id = ?;
+
+countByStoreIdToday:
+SELECT COUNT(*) FROM sales WHERE store_id = ? AND created_at >= ?;
+
+sumByStoreIdToday:
+SELECT COALESCE(SUM(total_amount), 0.0) FROM sales WHERE store_id = ? AND created_at >= ? AND is_refunded = 0;
