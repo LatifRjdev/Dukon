@@ -37,4 +37,19 @@
     <string name="auth_start">Начать работу</string>
     <string name="auth_no_account">Нет аккаунта?</string>
     <string name="auth_register">Регистрация</string>
+    <!-- Products -->
+    <string name="product_add">Добавить товар</string>
+    <string name="product_edit">Редактировать</string>
+    <string name="product_detail">Товар</string>
+    <string name="product_search_hint">Поиск по названию или штрихкоду…</string>
+    <string name="product_empty">Нет товаров</string>
+    <string name="product_not_found">Товар не найден</string>
+    <string name="product_name">Название</string>
+    <string name="product_barcode">Штрихкод</string>
+    <string name="product_price">Цена</string>
+    <string name="product_cost_price">Себестоимость</string>
+    <string name="product_quantity">Количество</string>
+    <string name="product_unit">Единица</string>
+    <string name="product_margin">Маржа</string>
+    <string name="product_category">Категория</string>
 </resources>

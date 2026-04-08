@@ -37,4 +37,19 @@
     <string name="auth_start">Оғоз кардан</string>
     <string name="auth_no_account">Аккаунт надоред?</string>
     <string name="auth_register">Бақайдгирӣ</string>
+    <!-- Products -->
+    <string name="product_add">Илова кардани мол</string>
+    <string name="product_edit">Таҳрир</string>
+    <string name="product_detail">Мол</string>
+    <string name="product_search_hint">Ҷустуҷӯ аз рӯи ном ё штрихкод…</string>
+    <string name="product_empty">Мол нест</string>
+    <string name="product_not_found">Мол ёфт нашуд</string>
+    <string name="product_name">Ном</string>
+    <string name="product_barcode">Штрихкод</string>
+    <string name="product_price">Нарх</string>
+    <string name="product_cost_price">Арзиши аслӣ</string>
+    <string name="product_quantity">Миқдор</string>
+    <string name="product_unit">Воҳид</string>
+    <string name="product_margin">Маржа</string>
+    <string name="product_category">Категория</string>
 </resources>

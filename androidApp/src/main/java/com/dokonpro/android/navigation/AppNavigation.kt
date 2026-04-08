@@ -10,13 +10,20 @@ import com.dokonpro.android.ui.MainScreen
 import com.dokonpro.android.ui.auth.OtpScreen
 import com.dokonpro.android.ui.auth.PhoneInputScreen
 import com.dokonpro.android.ui.auth.RegisterScreen
+import com.dokonpro.android.ui.products.AddEditProductScreen
+import com.dokonpro.android.ui.products.ProductDetailScreen
+import com.dokonpro.android.ui.products.ProductListScreen
 import com.dokonpro.android.viewmodel.AuthStep
 import com.dokonpro.android.viewmodel.AuthViewModel
+import com.dokonpro.android.viewmodel.ProductViewModel
 import org.koin.androidx.compose.koinViewModel
 
 object Routes {
     const val AUTH = "auth"
     const val MAIN = "main"
+    const val PRODUCTS = "products"
+    const val PRODUCT_DETAIL = "products/{productId}"
+    const val ADD_PRODUCT = "products/add"
 }
 
 @Composable
@@ -66,6 +73,37 @@ fun AppNavigation() {
         }
         composable(Routes.MAIN) {
             MainScreen()
+        }
+        composable(Routes.PRODUCTS) {
+            val viewModel: ProductViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            val syncStatus by viewModel.syncStatus.collectAsStateWithLifecycle()
+            ProductListScreen(
+                products = state.products, searchQuery = state.searchQuery, syncStatus = syncStatus,
+                isLoading = state.isLoading, onSearchChange = viewModel::onSearchQueryChange,
+                onProductClick = { id -> navController.navigate("products/$id") },
+                onAddClick = { navController.navigate(Routes.ADD_PRODUCT) }
+            )
+        }
+        composable(Routes.ADD_PRODUCT) {
+            val viewModel: ProductViewModel = koinViewModel()
+            AddEditProductScreen(
+                onSave = { name, barcode, price, costPrice, quantity, unit, categoryId ->
+                    viewModel.addProduct(name, barcode, price, costPrice, quantity, unit, categoryId)
+                    navController.popBackStack()
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.PRODUCT_DETAIL) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getString("productId") ?: return@composable
+            val viewModel: ProductViewModel = koinViewModel()
+            val product = viewModel.state.value.products.find { it.id == productId }
+            ProductDetailScreen(
+                product = product, onBack = { navController.popBackStack() },
+                onEdit = { /* edit flow later */ },
+                onDelete = { viewModel.removeProduct(productId); navController.popBackStack() }
+            )
         }
     }
 }
