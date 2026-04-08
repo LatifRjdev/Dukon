@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS categories (
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    store_id TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_categories_store_id ON categories(store_id);
+
+selectByStoreId:
+SELECT * FROM categories WHERE store_id = ? ORDER BY name ASC;
+
+insertOrReplace:
+INSERT OR REPLACE INTO categories (id, name, store_id, created_at)
+VALUES (?, ?, ?, ?);
+
+deleteById:
+DELETE FROM categories WHERE id = ?;
