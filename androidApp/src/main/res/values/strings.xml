@@ -52,4 +52,21 @@
     <string name="product_unit">Единица</string>
     <string name="product_margin">Маржа</string>
     <string name="product_category">Категория</string>
+    <!-- POS / Sales -->
+    <string name="pos_cart">Корзина</string>
+    <string name="pos_cart_empty">Корзина пуста</string>
+    <string name="pos_search">Поиск товара…</string>
+    <string name="pos_pay">Оплатить</string>
+    <string name="pos_checkout">Оформление</string>
+    <string name="pos_subtotal">Подытог</string>
+    <string name="pos_discount">Скидка</string>
+    <string name="pos_total">Итого</string>
+    <string name="pos_payment_method">Способ оплаты</string>
+    <string name="pos_sale_complete">Продажа завершена!</string>
+    <string name="pos_receipt_number">Чек №</string>
+    <string name="pos_new_sale">Новая продажа</string>
+    <string name="pos_sales_history">История продаж</string>
+    <string name="pos_no_sales">Нет продаж</string>
+    <string name="pos_items">товаров</string>
+    <string name="pos_refunded">Возврат</string>
 </resources>

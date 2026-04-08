@@ -5,6 +5,7 @@ import com.dokonpro.shared.data.local.DatabaseDriverFactory
 import com.dokonpro.shared.data.local.TokenStorage
 import com.dokonpro.shared.di.sharedModule
 import com.dokonpro.android.viewmodel.AuthViewModel
+import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -25,6 +26,7 @@ class DokonProApp : Application() {
                     single { TokenStorage(get()) }
                     viewModel { AuthViewModel(get(), get(), get()) }
                     viewModel { ProductViewModel(get(), get(), get(), get(), get(), get(), "default-store") }
+                    viewModel { POSViewModel(get(), get(), get(), get(), get(), get(), get(), "default-store") }
                 }
             )
         }

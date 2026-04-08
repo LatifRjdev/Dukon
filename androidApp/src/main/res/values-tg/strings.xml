@@ -52,4 +52,21 @@
     <string name="product_unit">Воҳид</string>
     <string name="product_margin">Маржа</string>
     <string name="product_category">Категория</string>
+    <!-- POS / Sales -->
+    <string name="pos_cart">Сабад</string>
+    <string name="pos_cart_empty">Сабад холӣ аст</string>
+    <string name="pos_search">Ҷустуҷӯи мол…</string>
+    <string name="pos_pay">Пардохт</string>
+    <string name="pos_checkout">Расмиятдиҳӣ</string>
+    <string name="pos_subtotal">Ҷамъи қисмӣ</string>
+    <string name="pos_discount">Тахфиф</string>
+    <string name="pos_total">Ҷамъ</string>
+    <string name="pos_payment_method">Усули пардохт</string>
+    <string name="pos_sale_complete">Фурӯш анҷом ёфт!</string>
+    <string name="pos_receipt_number">Чек №</string>
+    <string name="pos_new_sale">Фурӯши нав</string>
+    <string name="pos_sales_history">Таърихи фурӯш</string>
+    <string name="pos_no_sales">Фурӯш нест</string>
+    <string name="pos_items">мол</string>
+    <string name="pos_refunded">Баргардонидан</string>
 </resources>
