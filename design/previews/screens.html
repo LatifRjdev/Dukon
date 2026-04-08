@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DokonPro — All Screens</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0C0C14;
+  font-family: 'Nunito Sans', sans-serif;
+  padding: 32px 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.page-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 36px;
+}
+
+.screens-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1800px;
+  margin: 0 auto 48px;
+}
+
+.screen-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen-label {
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 6px;
+}
+.screen-desc {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ===== PHONE ===== */
+.phone {
+  width: 375px;
+  height: 812px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  background: #F5F6F8;
+}
+.phone-screen {
+  width: 100%; height: 100%;
+  overflow-y: auto; overflow-x: hidden;
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.phone-screen::-webkit-scrollbar { display: none; }
+
+/* ===== STATUS BAR ===== */
+.status-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 28px 6px; font-size: 15px; font-weight: 700;
+}
+.status-bar.light { color: #fff; }
+.status-bar.dark { color: #1F2937; }
+.si { display: flex; gap: 5px; align-items: center; }
+.si .material-symbols-rounded { font-size: 17px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20; }
+
+/* ===== SHARED COLORS ===== */
+:root {
+  --teal: #00796B;
+  --teal-light: #E0F2F1;
+  --teal-dark: #004D40;
+  --amber: #FFA000;
+  --amber-light: #FFF3E0;
+  --indigo: #5C6BC0;
+  --indigo-light: #E8EAF6;
+  --red: #DC2626;
+  --red-light: #FEE2E2;
+  --green: #16A34A;
+  --green-light: #DCFCE7;
+  --bg: #F5F6F8;
+  --card: #FFFFFF;
+  --text: #1F2937;
+  --text2: #6B7280;
+  --text3: #9CA3AF;
+  --border: #F0F0F0;
+}
+
+/* =========================================
+   SCREEN 1: AUTH — Phone Input
+   ========================================= */
+.auth-bg {
+  background: var(--teal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px 30px;
+}
+
+.auth-logo {
+  width: 72px; height: 72px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.auth-logo .material-symbols-rounded {
+  font-size: 36px; color: #fff;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 48;
+}
+
+.auth-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 32px; font-weight: 800;
+  color: #fff; margin-bottom: 8px;
+}
+.auth-subtitle {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  text-align: center; line-height: 1.5;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 32px 24px 40px;
+}
+
+.auth-card h3 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--text); margin-bottom: 6px;
+}
+.auth-card p {
+  font-size: 14px; color: var(--text2);
+  margin-bottom: 24px; line-height: 1.5;
+}
+
+.input-group { margin-bottom: 20px; }
+.input-label {
+  font-size: 13px; font-weight: 700;
+  color: var(--text2); margin-bottom: 8px;
+  display: block;
+}
+
+.phone-input {
+  display: flex; gap: 10px;
+}
+.country-code {
+  width: 72px; height: 52px;
+  background: var(--teal-light); border: 2px solid #B2DFDB;
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Rubik', sans-serif; font-size: 16px; font-weight: 700; color: var(--teal);
+}
+.phone-field {
+  flex: 1; height: 52px;
+  background: #F9FAFB; border: 2px solid #E5E7EB;
+  border-radius: 14px; padding: 0 16px;
+  font-family: 'Rubik', sans-serif; font-size: 18px; color: var(--text);
+  letter-spacing: 1px; outline: none;
+}
+
+.btn-primary {
+  width: 100%; height: 54px;
+  background: linear-gradient(135deg, var(--teal), #00695C);
+  color: #fff; border: none; border-radius: 16px;
+  font-family: 'Rubik', sans-serif; font-size: 16px; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 4px 16px rgba(0,121,107,0.3);
+  margin-bottom: 16px;
+}
+.btn-primary .material-symbols-rounded { font-size: 20px; }
+
+.auth-footer {
+  text-align: center; font-size: 13px; color: var(--text3);
+}
+.auth-footer a { color: var(--teal); font-weight: 700; text-decoration: none; }
+
+/* =========================================
+   SCREEN 2: OTP
+   ========================================= */
+.otp-screen { background: #fff; height: 100%; }
+
+.otp-header {
+  padding: 8px 16px; display: flex; align-items: center; gap: 8px;
+}
+.otp-back {
+  width: 40px; height: 40px; border-radius: 12px; background: var(--bg);
+  border: none; display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.otp-back .material-symbols-rounded { font-size: 22px; color: var(--text); }
+
+.otp-content { padding: 20px 24px; text-align: center; }
+
+.otp-icon-wrap {
+  width: 80px; height: 80px; border-radius: 24px;
+  background: var(--teal-light); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+}
+.otp-icon-wrap .material-symbols-rounded {
+  font-size: 40px; color: var(--teal);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+.otp-content h2 {
+  font-family: 'Rubik', sans-serif; font-size: 24px; font-weight: 700;
+  color: var(--text); margin-bottom: 8px;
+}
+.otp-content p {
+  font-size: 14px; color: var(--text2); margin-bottom: 4px;
+}
+.otp-phone {
+  font-family: 'Rubik', sans-serif; font-size: 16px; font-weight: 700;
+  color: var(--teal); margin-bottom: 32px; display: block;
+}
+
+.otp-boxes {
+  display: flex; gap: 12px; justify-content: center; margin-bottom: 32px;
+}
+.otp-box {
+  width: 52px; height: 60px;
+  background: var(--bg); border: 2px solid #E5E7EB; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rubik', sans-serif; font-size: 26px; font-weight: 700; color: var(--text);
+}
+.otp-box.active { border-color: var(--teal); background: var(--teal-light); }
+.otp-box.filled { border-color: var(--teal); color: var(--teal); }
+
+.otp-timer {
+  font-size: 14px; color: var(--text3); margin-bottom: 32px;
+}
+.otp-timer strong { color: var(--teal); font-weight: 700; }
+
+.otp-actions { padding: 0 24px; }
+
+/* =========================================
+   SCREEN 3: POS
+   ========================================= */
+.pos-screen { background: var(--bg); height: 100%; display: flex; flex-direction: column; }
+
+.pos-header {
+  background: var(--teal); padding: 0 16px 14px;
+  border-radius: 0 0 20px 20px;
+}
+.pos-header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 4px; margin-bottom: 12px;
+}
+.pos-header h2 {
+  font-family: 'Rubik', sans-serif; font-size: 20px; font-weight: 700; color: #fff;
+}
+.pos-search {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+  border-radius: 12px; padding: 11px 14px;
+}
+.pos-search .material-symbols-rounded { font-size: 20px; color: rgba(255,255,255,0.7); }
+.pos-search span { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+.pos-cats {
+  display: flex; gap: 8px; padding: 12px 16px 0; overflow-x: auto;
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.pos-cats::-webkit-scrollbar { display: none; }
+.pos-cat {
+  padding: 8px 16px; border-radius: 10px; font-size: 13px; font-weight: 700;
+  white-space: nowrap; border: none; cursor: pointer;
+  background: var(--card); color: var(--text2);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.pos-cat.active { background: var(--teal); color: #fff; }
+
+.pos-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  padding: 14px 16px; flex: 1; overflow-y: auto; align-content: start;
+}
+
+.pos-tile {
+  background: var(--card); border-radius: 14px; padding: 12px 10px;
+  text-align: center; cursor: pointer; border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: transform 0.1s;
+}
+.pos-tile:active { transform: scale(0.96); }
+
+.pos-tile-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+}
+.pos-tile-icon .material-symbols-rounded {
+  font-size: 22px;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.pos-tile-name { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.2; }
+.pos-tile-price {
+  font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 700; color: var(--teal);
+}
+
+/* Cart bar */
+.cart-bar {
+  background: var(--teal);
+  margin: 8px 16px 0;
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  color: #fff; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,121,107,0.3);
+  position: relative;
+}
+.cart-info { display: flex; align-items: center; gap: 10px; }
+.cart-badge {
+  background: var(--amber); color: #000;
+  width: 28px; height: 28px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 700;
+}
+.cart-text { font-size: 14px; font-weight: 600; }
+.cart-total {
+  font-family: 'Rubik', sans-serif; font-size: 18px; font-weight: 700;
+}
+
+/* =========================================
+   SCREEN 4: PRODUCT DETAIL
+   ========================================= */
+.detail-screen { background: var(--bg); height: 100%; }
+
+.detail-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px;
+}
+.detail-back {
+  width: 40px; height: 40px; border-radius: 12px; background: var(--card);
+  border: none; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.detail-back .material-symbols-rounded { font-size: 22px; color: var(--text); }
+.detail-header span { font-family: 'Rubik'; font-size: 17px; font-weight: 700; color: var(--text); }
+.detail-actions { display: flex; gap: 8px; }
+.detail-action {
+  width: 40px; height: 40px; border-radius: 12px; background: var(--card);
+  border: none; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.detail-action .material-symbols-rounded { font-size: 20px; color: var(--text2); }
+
+.detail-image {
+  width: calc(100% - 32px); height: 200px; margin: 8px 16px 0;
+  background: linear-gradient(135deg, var(--teal-light), #B2DFDB);
+  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+}
+.detail-image .material-symbols-rounded {
+  font-size: 80px; color: var(--teal); opacity: 0.3;
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+}
+
+.detail-info {
+  background: var(--card); border-radius: 24px 24px 0 0;
+  margin-top: -16px; position: relative; z-index: 1;
+  padding: 24px 20px;
+}
+
+.detail-badge-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.detail-badge {
+  padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 700;
+}
+.badge-category { background: var(--teal-light); color: var(--teal); }
+.badge-stock { background: var(--green-light); color: var(--green); }
+
+.detail-name {
+  font-family: 'Rubik', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--text); margin-bottom: 4px;
+}
+.detail-barcode { font-size: 13px; color: var(--text3); margin-bottom: 20px; }
+
+.detail-price-row {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px;
+}
+.detail-price {
+  font-family: 'Rubik', sans-serif; font-size: 32px; font-weight: 700; color: var(--teal);
+}
+.detail-cost {
+  font-size: 14px; color: var(--text3); text-decoration: line-through;
+}
+
+.detail-stats {
+  display: flex; gap: 10px; margin-bottom: 20px;
+}
+.detail-stat {
+  flex: 1; background: var(--bg); border-radius: 14px; padding: 14px; text-align: center;
+}
+.detail-stat-value {
+  font-family: 'Rubik', sans-serif; font-size: 20px; font-weight: 700; color: var(--text);
+}
+.detail-stat-label { font-size: 11px; font-weight: 600; color: var(--text3); margin-top: 2px; }
+
+.detail-btn-row { display: flex; gap: 10px; }
+.btn-edit {
+  flex: 1; height: 50px;
+  background: var(--bg); border: none; border-radius: 14px;
+  font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 700;
+  color: var(--text); display: flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer;
+}
+.btn-sell {
+  flex: 2; height: 50px;
+  background: linear-gradient(135deg, var(--teal), #00695C);
+  border: none; border-radius: 14px;
+  font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 700;
+  color: #fff; display: flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; box-shadow: 0 4px 16px rgba(0,121,107,0.25);
+}
+.btn-edit .material-symbols-rounded, .btn-sell .material-symbols-rounded { font-size: 20px; }
+
+/* =========================================
+   SCREEN 5: FINANCE
+   ========================================= */
+.fin-screen { background: var(--bg); height: 100%; }
+
+.fin-header {
+  background: var(--teal); padding: 0 20px 20px;
+  border-radius: 0 0 24px 24px;
+}
+.fin-header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 4px; margin-bottom: 16px;
+}
+.fin-header h2 {
+  font-family: 'Rubik', sans-serif; font-size: 20px; font-weight: 700; color: #fff;
+}
+
+.fin-period {
+  display: flex; gap: 6px; margin-bottom: 16px;
+}
+.fin-period-btn {
+  padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700;
+  border: none; cursor: pointer;
+  background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6);
+}
+.fin-period-btn.active { background: #fff; color: var(--teal); }
+
+.fin-total {
+  text-align: center; color: #fff;
+}
+.fin-total-label { font-size: 13px; opacity: 0.7; margin-bottom: 4px; }
+.fin-total-value {
+  font-family: 'Rubik', sans-serif; font-size: 36px; font-weight: 700;
+}
+.fin-total-sub { font-size: 13px; opacity: 0.6; margin-top: 2px; }
+
+.fin-summary {
+  display: flex; gap: 10px; padding: 16px 20px 0;
+}
+.fin-card {
+  flex: 1; background: var(--card); border-radius: 16px; padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.fin-card-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+}
+.fin-card-icon .material-symbols-rounded {
+  font-size: 20px;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+}
+.fin-card.income .fin-card-icon { background: var(--green-light); }
+.fin-card.income .fin-card-icon .material-symbols-rounded { color: var(--green); }
+.fin-card.expense .fin-card-icon { background: var(--red-light); }
+.fin-card.expense .fin-card-icon .material-symbols-rounded { color: var(--red); }
+
+.fin-card-label { font-size: 12px; font-weight: 600; color: var(--text3); margin-bottom: 4px; }
+.fin-card-value { font-family: 'Rubik'; font-size: 20px; font-weight: 700; color: var(--text); }
+
+/* Chart placeholder */
+.fin-chart {
+  margin: 16px 20px 0; background: var(--card); border-radius: 16px;
+  padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.fin-chart h4 {
+  font-family: 'Rubik'; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 12px;
+}
+.chart-bars {
+  display: flex; align-items: flex-end; gap: 8px; height: 120px; padding-top: 8px;
+}
+.chart-bar-wrap {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.chart-bar {
+  width: 100%; border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, var(--teal), #4DB6AC);
+}
+.chart-label { font-size: 10px; font-weight: 600; color: var(--text3); }
+
+/* Transactions */
+.fin-txn-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px 8px;
+}
+.fin-txn-header h4 {
+  font-family: 'Rubik'; font-size: 15px; font-weight: 700; color: var(--text);
+}
+.fin-txn-header a { font-size: 13px; color: var(--teal); text-decoration: none; font-weight: 700; }
+
+.txn-list { padding: 0 20px; }
+.txn-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.txn-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.txn-icon .material-symbols-rounded {
+  font-size: 20px;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+.txn-item.income .txn-icon { background: var(--green-light); }
+.txn-item.income .txn-icon .material-symbols-rounded { color: var(--green); }
+.txn-item.expense .txn-icon { background: var(--red-light); }
+.txn-item.expense .txn-icon .material-symbols-rounded { color: var(--red); }
+
+.txn-info { flex: 1; }
+.txn-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.txn-meta { font-size: 12px; color: var(--text3); }
+.txn-amount { font-family: 'Rubik'; font-size: 15px; font-weight: 700; }
+.txn-item.income .txn-amount { color: var(--green); }
+.txn-item.expense .txn-amount { color: var(--red); }
+
+/* Bottom nav shared */
+.bottom-nav {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: #fff; display: flex; padding: 6px 4px 28px;
+  justify-content: space-around; border-top: 1px solid var(--border);
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  cursor: pointer; border: none; background: none; padding: 6px 14px; border-radius: 12px;
+}
+.nav-item .material-symbols-rounded {
+  font-size: 24px; color: var(--text3);
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.nav-item span:last-child { font-size: 10px; font-weight: 700; color: var(--text3); }
+.nav-item.active { background: var(--teal-light); }
+.nav-item.active .material-symbols-rounded {
+  color: var(--teal);
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+.nav-item.active span:last-child { color: var(--teal); }
+
+/* Header button (reusable) */
+.hdr-btn {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+  border: none; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.hdr-btn .material-symbols-rounded { font-size: 22px; }
+</style>
+</head>
+<body>
+
+<div class="page-title">DokonPro — Fresh Retail</div>
+<p class="page-subtitle">Все ключевые экраны в одном стиле</p>
+
+<div class="screens-row">
+
+<!-- ===== SCREEN 1: AUTH ===== -->
+<div class="screen-wrap">
+  <div class="screen-label">Вход</div>
+  <div class="screen-desc">Ввод номера телефона</div>
+  <div class="phone">
+    <div class="phone-screen">
+      <div class="auth-bg">
+        <div class="status-bar light" style="background:transparent">
+          <span>9:41</span>
+          <div class="si">
+            <span class="material-symbols-rounded">signal_cellular_alt</span>
+            <span class="material-symbols-rounded">wifi</span>
+            <span class="material-symbols-rounded">battery_5_bar</span>
+          </div>
+        </div>
+        <div class="auth-top">
+          <div class="auth-logo">
+            <span class="material-symbols-rounded">storefront</span>
+          </div>
+          <div class="auth-title">ДоконПро</div>
+          <div class="auth-subtitle">Управление магазином<br>в одном приложении</div>
+        </div>
+        <div class="auth-card">
+          <h3>Вход в аккаунт</h3>
+          <p>Введите номер телефона для получения кода подтверждения</p>
+          <div class="input-group">
+            <label class="input-label">Номер телефона</label>
+            <div class="phone-input">
+              <div class="country-code">+992</div>
+              <div class="phone-field" style="display:flex;align-items:center;color:#9CA3AF;font-size:16px;letter-spacing:2px;">90 123 4567</div>
+            </div>
+          </div>
+          <button class="btn-primary">
+            Получить код
+            <span class="material-symbols-rounded" style="font-size:18px">arrow_forward</span>
+          </button>
+          <div class="auth-footer">
+            Нет аккаунта? <a href="#">Регистрация</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN 2: OTP ===== -->
+<div class="screen-wrap">
+  <div class="screen-label">Код OTP</div>
+  <div class="screen-desc">Подтверждение номера</div>
+  <div class="phone">
+    <div class="phone-screen">
+      <div class="otp-screen">
+        <div class="status-bar dark" style="background:#fff">
+          <span>9:41</span>
+          <div class="si">
+            <span class="material-symbols-rounded">signal_cellular_alt</span>
+            <span class="material-symbols-rounded">wifi</span>
+            <span class="material-symbols-rounded">battery_5_bar</span>
+          </div>
+        </div>
+        <div class="otp-header">
+          <button class="otp-back">
+            <span class="material-symbols-rounded">arrow_back</span>
+          </button>
+        </div>
+        <div class="otp-content">
+          <div class="otp-icon-wrap">
+            <span class="material-symbols-rounded">sms</span>
+          </div>
+          <h2>Введите код</h2>
+          <p>Код отправлен на номер</p>
+          <span class="otp-phone">+992 90 123 4567</span>
+          <div class="otp-boxes">
+            <div class="otp-box filled">1</div>
+            <div class="otp-box filled">2</div>
+            <div class="otp-box filled">3</div>
+            <div class="otp-box active"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+          </div>
+          <div class="otp-timer">
+            Отправить повторно через <strong>0:45</strong>
+          </div>
+        </div>
+        <div class="otp-actions">
+          <button class="btn-primary">
+            Подтвердить
+            <span class="material-symbols-rounded" style="font-size:18px">check</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN 3: POS ===== -->
+<div class="screen-wrap">
+  <div class="screen-label">Касса (POS)</div>
+  <div class="screen-desc">Выбор товаров и корзина</div>
+  <div class="phone">
+    <div class="phone-screen">
+      <div class="pos-screen">
+        <div style="background:var(--teal)">
+          <div class="status-bar light" style="background:transparent">
+            <span>9:41</span>
+            <div class="si">
+              <span class="material-symbols-rounded">signal_cellular_alt</span>
+              <span class="material-symbols-rounded">wifi</span>
+              <span class="material-symbols-rounded">battery_5_bar</span>
+            </div>
+          </div>
+          <div class="pos-header">
+            <div class="pos-header-top">
+              <h2>Касса</h2>
+              <div style="display:flex;gap:8px">
+                <button class="hdr-btn"><span class="material-symbols-rounded">qr_code_scanner</span></button>
+                <button class="hdr-btn"><span class="material-symbols-rounded">person</span></button>
+              </div>
+            </div>
+            <div class="pos-search">
+              <span class="material-symbols-rounded">search</span>
+              <span>Поиск или сканирование...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pos-cats">
+          <button class="pos-cat active">Все</button>
+          <button class="pos-cat">Напитки</button>
+          <button class="pos-cat">Хлеб</button>
+          <button class="pos-cat">Крупы</button>
+          <button class="pos-cat">Масло</button>
+          <button class="pos-cat">Молоко</button>
+        </div>
+
+        <div class="pos-grid">
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--teal-light)">
+              <span class="material-symbols-rounded" style="color:var(--teal)">local_drink</span>
+            </div>
+            <div class="pos-tile-name">Coca-Cola 1.5л</div>
+            <div class="pos-tile-price">12.50 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--amber-light)">
+              <span class="material-symbols-rounded" style="color:#E65100">local_drink</span>
+            </div>
+            <div class="pos-tile-name">Fanta 1.5л</div>
+            <div class="pos-tile-price">12.50 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--indigo-light)">
+              <span class="material-symbols-rounded" style="color:var(--indigo)">water_drop</span>
+            </div>
+            <div class="pos-tile-name">Вода 0.5л</div>
+            <div class="pos-tile-price">3.00 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--amber-light)">
+              <span class="material-symbols-rounded" style="color:#E65100">bakery_dining</span>
+            </div>
+            <div class="pos-tile-name">Нон</div>
+            <div class="pos-tile-price">3.00 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--teal-light)">
+              <span class="material-symbols-rounded" style="color:var(--teal)">rice_bowl</span>
+            </div>
+            <div class="pos-tile-name">Рис 1кг</div>
+            <div class="pos-tile-price">28.00 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--red-light)">
+              <span class="material-symbols-rounded" style="color:var(--red)">egg</span>
+            </div>
+            <div class="pos-tile-name">Яйца 10шт</div>
+            <div class="pos-tile-price">15.00 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:#FFF3E0">
+              <span class="material-symbols-rounded" style="color:#E65100">water_drop</span>
+            </div>
+            <div class="pos-tile-name">Масло 1л</div>
+            <div class="pos-tile-price">22.00 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--green-light)">
+              <span class="material-symbols-rounded" style="color:var(--green)">local_cafe</span>
+            </div>
+            <div class="pos-tile-name">Чай зелёный</div>
+            <div class="pos-tile-price">8.50 с</div>
+          </button>
+          <button class="pos-tile">
+            <div class="pos-tile-icon" style="background:var(--indigo-light)">
+              <span class="material-symbols-rounded" style="color:var(--indigo)">cookie</span>
+            </div>
+            <div class="pos-tile-name">Печенье</div>
+            <div class="pos-tile-price">18.00 с</div>
+          </button>
+        </div>
+
+        <div class="cart-bar">
+          <div class="cart-info">
+            <div class="cart-badge">3</div>
+            <div class="cart-text">Корзина</div>
+          </div>
+          <div class="cart-total">43.50 с</div>
+        </div>
+        <div style="height:78px"></div>
+
+        <div class="bottom-nav">
+          <button class="nav-item"><span class="material-symbols-rounded">home</span><span>Главная</span></button>
+          <button class="nav-item active"><span class="material-symbols-rounded">point_of_sale</span><span>Касса</span></button>
+          <button class="nav-item"><span class="material-symbols-rounded">inventory_2</span><span>Товары</span></button>
+          <button class="nav-item"><span class="material-symbols-rounded">account_balance_wallet</span><span>Финансы</span></button>
+          <button class="nav-item"><span class="material-symbols-rounded">more_horiz</span><span>Ещё</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN 4: PRODUCT DETAIL ===== -->
+<div class="screen-wrap">
+  <div class="screen-label">Карточка товара</div>
+  <div class="screen-desc">Детали и действия</div>
+  <div class="phone">
+    <div class="phone-screen">
+      <div class="detail-screen">
+        <div class="status-bar dark" style="background:var(--bg)">
+          <span>9:41</span>
+          <div class="si">
+            <span class="material-symbols-rounded">signal_cellular_alt</span>
+            <span class="material-symbols-rounded">wifi</span>
+            <span class="material-symbols-rounded">battery_5_bar</span>
+          </div>
+        </div>
+        <div class="detail-header">
+          <button class="detail-back"><span class="material-symbols-rounded">arrow_back</span></button>
+          <span>Товар</span>
+          <div class="detail-actions">
+            <button class="detail-action"><span class="material-symbols-rounded">share</span></button>
+            <button class="detail-action"><span class="material-symbols-rounded">more_vert</span></button>
+          </div>
+        </div>
+
+        <div class="detail-image">
+          <span class="material-symbols-rounded">local_drink</span>
+        </div>
+
+        <div class="detail-info">
+          <div class="detail-badge-row">
+            <span class="detail-badge badge-category">Напитки</span>
+            <span class="detail-badge badge-stock">В наличии</span>
+          </div>
+          <div class="detail-name">Coca-Cola 1.5л</div>
+          <div class="detail-barcode">Штрихкод: 5449000000439</div>
+
+          <div class="detail-price-row">
+            <span class="detail-price">12.50 с</span>
+            <span class="detail-cost">8.50 с себест.</span>
+          </div>
+
+          <div class="detail-stats">
+            <div class="detail-stat">
+              <div class="detail-stat-value">48</div>
+              <div class="detail-stat-label">На складе</div>
+            </div>
+            <div class="detail-stat">
+              <div class="detail-stat-value">156</div>
+              <div class="detail-stat-label">Продано</div>
+            </div>
+            <div class="detail-stat">
+              <div class="detail-stat-value">32%</div>
+              <div class="detail-stat-label">Маржа</div>
+            </div>
+          </div>
+
+          <div class="detail-btn-row">
+            <button class="btn-edit">
+              <span class="material-symbols-rounded">edit</span>
+              Изменить
+            </button>
+            <button class="btn-sell">
+              <span class="material-symbols-rounded">point_of_sale</span>
+              Продать
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN 5: FINANCE ===== -->
+<div class="screen-wrap">
+  <div class="screen-label">Финансы</div>
+  <div class="screen-desc">Выручка, расходы, график</div>
+  <div class="phone">
+    <div class="phone-screen">
+      <div class="fin-screen">
+        <div style="background:var(--teal)">
+          <div class="status-bar light" style="background:transparent">
+            <span>9:41</span>
+            <div class="si">
+              <span class="material-symbols-rounded">signal_cellular_alt</span>
+              <span class="material-symbols-rounded">wifi</span>
+              <span class="material-symbols-rounded">battery_5_bar</span>
+            </div>
+          </div>
+          <div class="fin-header">
+            <div class="fin-header-top">
+              <h2>Финансы</h2>
+              <button class="hdr-btn"><span class="material-symbols-rounded">download</span></button>
+            </div>
+            <div class="fin-period">
+              <button class="fin-period-btn">День</button>
+              <button class="fin-period-btn active">Неделя</button>
+              <button class="fin-period-btn">Месяц</button>
+              <button class="fin-period-btn">Год</button>
+            </div>
+            <div class="fin-total">
+              <div class="fin-total-label">Чистая прибыль</div>
+              <div class="fin-total-value">64,280 с</div>
+              <div class="fin-total-sub">+12.5% к прошлой неделе</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fin-summary">
+          <div class="fin-card income">
+            <div class="fin-card-icon">
+              <span class="material-symbols-rounded">arrow_downward</span>
+            </div>
+            <div class="fin-card-label">Доходы</div>
+            <div class="fin-card-value">87,450 с</div>
+          </div>
+          <div class="fin-card expense">
+            <div class="fin-card-icon">
+              <span class="material-symbols-rounded">arrow_upward</span>
+            </div>
+            <div class="fin-card-label">Расходы</div>
+            <div class="fin-card-value">23,170 с</div>
+          </div>
+        </div>
+
+        <div class="fin-chart">
+          <h4>Выручка за неделю</h4>
+          <div class="chart-bars">
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:50px"></div>
+              <span class="chart-label">Пн</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:75px"></div>
+              <span class="chart-label">Вт</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:60px"></div>
+              <span class="chart-label">Ср</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:90px"></div>
+              <span class="chart-label">Чт</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:110px;background:linear-gradient(180deg,var(--amber),#FFB74D)"></div>
+              <span class="chart-label" style="color:var(--amber);font-weight:700">Пт</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:95px"></div>
+              <span class="chart-label">Сб</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height:45px;opacity:0.4"></div>
+              <span class="chart-label">Вс</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fin-txn-header">
+          <h4>Последние операции</h4>
+          <a href="#">Все &rarr;</a>
+        </div>
+        <div class="txn-list">
+          <div class="txn-item income">
+            <div class="txn-icon"><span class="material-symbols-rounded">receipt_long</span></div>
+            <div class="txn-info">
+              <div class="txn-name">Продажа #0047</div>
+              <div class="txn-meta">Сегодня, 14:32</div>
+            </div>
+            <div class="txn-amount">+1,250 с</div>
+          </div>
+          <div class="txn-item expense">
+            <div class="txn-icon"><span class="material-symbols-rounded">local_shipping</span></div>
+            <div class="txn-info">
+              <div class="txn-name">Закупка товара</div>
+              <div class="txn-meta">Сегодня, 11:15</div>
+            </div>
+            <div class="txn-amount">-8,400 с</div>
+          </div>
+          <div class="txn-item income">
+            <div class="txn-icon"><span class="material-symbols-rounded">receipt_long</span></div>
+            <div class="txn-info">
+              <div class="txn-name">Продажа #0046</div>
+              <div class="txn-meta">Сегодня, 10:05</div>
+            </div>
+            <div class="txn-amount">+680 с</div>
+          </div>
+          <div class="txn-item expense">
+            <div class="txn-icon"><span class="material-symbols-rounded">bolt</span></div>
+            <div class="txn-info">
+              <div class="txn-name">Электричество</div>
+              <div class="txn-meta">Вчера, 16:00</div>
+            </div>
+            <div class="txn-amount">-350 с</div>
+          </div>
+        </div>
+        <div style="height:90px"></div>
+
+        <div class="bottom-nav">
+          <button class="nav-item"><span class="material-symbols-rounded">home</span><span>Главная</span></button>
+          <button class="nav-item"><span class="material-symbols-rounded">point_of_sale</span><span>Касса</span></button>
+          <button class="nav-item"><span class="material-symbols-rounded">inventory_2</span><span>Товары</span></button>
+          <button class="nav-item active"><span class="material-symbols-rounded">account_balance_wallet</span><span>Финансы</span></button>
+          <button class="nav-item"><span class="material-symbols-rounded">more_horiz</span><span>Ещё</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DokonPro — Fresh Retail v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111118;
+  color: #fff;
+  font-family: 'Nunito Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 32px;
+  gap: 40px;
+}
+
+.label-area {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.label-area h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.label-area p {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ===== PHONE ===== */
+.phone {
+  width: 393px;
+  height: 852px;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  background: #F5F6F8;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.phone-screen::-webkit-scrollbar { display: none; }
+
+/* ===== STATUS BAR ===== */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: #00796B;
+}
+
+.status-icons { display: flex; gap: 5px; align-items: center; }
+.status-icons .material-symbols-rounded { font-size: 17px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20; }
+
+/* ===== HEADER ===== */
+.header {
+  background: #00796B;
+  padding: 4px 20px 20px;
+  border-radius: 0 0 24px 24px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.header h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.header-actions { display: flex; gap: 8px; }
+
+.header-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.header-btn:hover { background: rgba(255,255,255,0.25); }
+.header-btn .material-symbols-rounded { font-size: 22px; }
+
+/* ===== KPI CARDS — modern style ===== */
+.kpi-row {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+
+.kpi-card {
+  flex: 1;
+  border-radius: 16px;
+  padding: 16px 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+
+.kpi-card.revenue {
+  background: linear-gradient(135deg, #fff 0%, #E0F2F1 100%);
+  color: #004D40;
+}
+.kpi-card.revenue::before { background: #00796B; }
+
+.kpi-card.sales {
+  background: linear-gradient(135deg, #fff 0%, #FFF8E1 100%);
+  color: #E65100;
+}
+.kpi-card.sales::before { background: #FFA000; }
+
+.kpi-card.stock {
+  background: linear-gradient(135deg, #fff 0%, #EDE7F6 100%);
+  color: #311B92;
+}
+.kpi-card.stock::before { background: #5C6BC0; }
+
+.kpi-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.kpi-card.revenue .kpi-icon { background: #00796B; color: #fff; }
+.kpi-card.sales .kpi-icon { background: #FFA000; color: #fff; }
+.kpi-card.stock .kpi-icon { background: #5C6BC0; color: #fff; }
+
+.kpi-icon .material-symbols-rounded { font-size: 18px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20; }
+
+.kpi-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.kpi-value {
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.kpi-sub {
+  font-size: 11px;
+  opacity: 0.5;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+/* ===== QUICK ACTIONS ===== */
+.quick-actions {
+  display: flex;
+  gap: 10px;
+  padding: 20px 20px 0;
+}
+
+.quick-action {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 8px 14px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.quick-action:active { transform: scale(0.97); }
+
+.quick-action .icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.quick-action:nth-child(1) .icon-wrap { background: #E0F2F1; }
+.quick-action:nth-child(2) .icon-wrap { background: #FFF3E0; }
+.quick-action:nth-child(3) .icon-wrap { background: #E8EAF6; }
+.quick-action:nth-child(4) .icon-wrap { background: #FCE4EC; }
+
+.quick-action:nth-child(1) .material-symbols-rounded { color: #00796B; }
+.quick-action:nth-child(2) .material-symbols-rounded { color: #E65100; }
+.quick-action:nth-child(3) .material-symbols-rounded { color: #3949AB; }
+.quick-action:nth-child(4) .material-symbols-rounded { color: #C62828; }
+
+.quick-action .material-symbols-rounded {
+  font-size: 24px;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.quick-action span:last-child {
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  display: block;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-bar {
+  margin: 16px 20px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.search-bar .material-symbols-rounded { font-size: 22px; color: #9CA3AF; }
+.search-bar span { color: #9CA3AF; font-size: 14px; }
+
+/* ===== SECTION ===== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.section-header h3 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.section-header a {
+  font-size: 13px;
+  color: #00796B;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* ===== PRODUCT LIST ===== */
+.product-list { padding: 0 20px; }
+
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  transition: transform 0.15s;
+}
+.product-item:active { transform: scale(0.99); }
+
+.product-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.product-item:nth-child(1) .product-icon { background: #E0F2F1; }
+.product-item:nth-child(2) .product-icon { background: #FFF3E0; }
+.product-item:nth-child(3) .product-icon { background: #E8EAF6; }
+.product-item:nth-child(4) .product-icon { background: #FCE4EC; }
+
+.product-item:nth-child(1) .product-icon .material-symbols-rounded { color: #00796B; }
+.product-item:nth-child(2) .product-icon .material-symbols-rounded { color: #E65100; }
+.product-item:nth-child(3) .product-icon .material-symbols-rounded { color: #3949AB; }
+.product-item:nth-child(4) .product-icon .material-symbols-rounded { color: #C62828; }
+
+.product-icon .material-symbols-rounded {
+  font-size: 24px;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.product-info { flex: 1; min-width: 0; }
+.product-name { font-size: 14px; font-weight: 700; color: #1F2937; }
+.product-meta { font-size: 12px; color: #9CA3AF; margin-top: 2px; }
+
+.product-right { text-align: right; flex-shrink: 0; }
+.product-price {
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00796B;
+}
+.product-stock { font-size: 11px; color: #9CA3AF; margin-top: 2px; font-weight: 600; }
+
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #E0F2F1;
+  color: #00796B;
+}
+
+.stock-badge.low {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+/* ===== FAB ===== */
+.fab {
+  position: absolute;
+  bottom: 88px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #FFA000, #FF8F00);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 6px 20px rgba(255,160,0,0.35);
+  transition: transform 0.15s;
+}
+.fab:active { transform: scale(0.95); }
+.fab .material-symbols-rounded { font-size: 28px; font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  padding: 6px 4px 28px;
+  justify-content: space-around;
+  border-top: 1px solid #F0F0F0;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 6px 14px;
+  border-radius: 12px;
+  transition: background 0.15s;
+  position: relative;
+}
+
+.nav-item .material-symbols-rounded {
+  font-size: 24px;
+  color: #9CA3AF;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.nav-item span:last-child {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9CA3AF;
+}
+
+.nav-item.active {
+  background: #E0F2F1;
+}
+
+.nav-item.active .material-symbols-rounded {
+  color: #00796B;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.nav-item.active span:last-child {
+  color: #00796B;
+}
+
+/* ===== CURRENCY ===== */
+.currency { font-size: 13px; font-weight: 500; opacity: 0.6; }
+</style>
+</head>
+<body>
+
+<div>
+  <div class="label-area">
+    <h2>DokonPro — Fresh Retail v2</h2>
+    <p>Modern Flat / Teal + Amber / Rubik + Nunito Sans</p>
+  </div>
+  <div class="phone">
+    <div class="phone-screen">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+          <span class="material-symbols-rounded">signal_cellular_alt</span>
+          <span class="material-symbols-rounded">wifi</span>
+          <span class="material-symbols-rounded">battery_5_bar</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-top">
+          <h1>ДоконПро</h1>
+          <div class="header-actions">
+            <button class="header-btn">
+              <span class="material-symbols-rounded">notifications</span>
+            </button>
+            <button class="header-btn">
+              <span class="material-symbols-rounded">sync</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Cards inside header -->
+        <div class="kpi-row">
+          <div class="kpi-card revenue">
+            <div class="kpi-icon">
+              <span class="material-symbols-rounded">trending_up</span>
+            </div>
+            <div class="kpi-label">Выручка</div>
+            <div class="kpi-value">12,450</div>
+            <div class="kpi-sub">TJS сегодня</div>
+          </div>
+          <div class="kpi-card sales">
+            <div class="kpi-icon">
+              <span class="material-symbols-rounded">receipt_long</span>
+            </div>
+            <div class="kpi-label">Продажи</div>
+            <div class="kpi-value">47</div>
+            <div class="kpi-sub">чеков</div>
+          </div>
+          <div class="kpi-card stock">
+            <div class="kpi-icon">
+              <span class="material-symbols-rounded">inventory_2</span>
+            </div>
+            <div class="kpi-label">Товары</div>
+            <div class="kpi-value">384</div>
+            <div class="kpi-sub">в наличии</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <button class="quick-action">
+          <div class="icon-wrap">
+            <span class="material-symbols-rounded">point_of_sale</span>
+          </div>
+          <span>Касса</span>
+        </button>
+        <button class="quick-action">
+          <div class="icon-wrap">
+            <span class="material-symbols-rounded">qr_code_scanner</span>
+          </div>
+          <span>Сканер</span>
+        </button>
+        <button class="quick-action">
+          <div class="icon-wrap">
+            <span class="material-symbols-rounded">group</span>
+          </div>
+          <span>Клиенты</span>
+        </button>
+        <button class="quick-action">
+          <div class="icon-wrap">
+            <span class="material-symbols-rounded">bar_chart</span>
+          </div>
+          <span>Отчёты</span>
+        </button>
+      </div>
+
+      <!-- Search -->
+      <div class="search-bar">
+        <span class="material-symbols-rounded">search</span>
+        <span>Поиск товара или штрихкода...</span>
+      </div>
+
+      <!-- Product list -->
+      <div class="section-header">
+        <h3>Последние товары</h3>
+        <a href="#">Все &rarr;</a>
+      </div>
+
+      <div class="product-list">
+        <div class="product-item">
+          <div class="product-icon">
+            <span class="material-symbols-rounded">local_drink</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">Coca-Cola 1.5л</div>
+            <div class="product-meta">5449000000439</div>
+          </div>
+          <div class="product-right">
+            <div class="product-price">12.50 <span class="currency">с</span></div>
+            <div class="stock-badge">48 шт</div>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-icon">
+            <span class="material-symbols-rounded">bakery_dining</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">Нон тоҷикӣ</div>
+            <div class="product-meta">8901234567890</div>
+          </div>
+          <div class="product-right">
+            <div class="product-price">3.00 <span class="currency">с</span></div>
+            <div class="stock-badge">120 шт</div>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-icon">
+            <span class="material-symbols-rounded">rice_bowl</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">Рис Басмати 1кг</div>
+            <div class="product-meta">6291100890125</div>
+          </div>
+          <div class="product-right">
+            <div class="product-price">28.00 <span class="currency">с</span></div>
+            <div class="stock-badge">65 шт</div>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-icon">
+            <span class="material-symbols-rounded">water_drop</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">Масло подсолнечное 1л</div>
+            <div class="product-meta">4607001234567</div>
+          </div>
+          <div class="product-right">
+            <div class="product-price">22.00 <span class="currency">с</span></div>
+            <div class="stock-badge low">5 шт</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 120px;"></div>
+
+      <!-- FAB -->
+      <button class="fab">
+        <span class="material-symbols-rounded">add</span>
+      </button>
+
+      <!-- Bottom Nav -->
+      <div class="bottom-nav">
+        <button class="nav-item active">
+          <span class="material-symbols-rounded">home</span>
+          <span>Главная</span>
+        </button>
+        <button class="nav-item">
+          <span class="material-symbols-rounded">point_of_sale</span>
+          <span>Касса</span>
+        </button>
+        <button class="nav-item">
+          <span class="material-symbols-rounded">inventory_2</span>
+          <span>Товары</span>
+        </button>
+        <button class="nav-item">
+          <span class="material-symbols-rounded">account_balance_wallet</span>
+          <span>Финансы</span>
+        </button>
+        <button class="nav-item">
+          <span class="material-symbols-rounded">more_horiz</span>
+          <span>Ещё</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

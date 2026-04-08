@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DokonPro — Phase 2 & 3 Screens</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0C0C14;font-family:'Nunito Sans',sans-serif;padding:32px 16px}
+.page-title{text-align:center;font-family:'Rubik';font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.page-sub{text-align:center;font-size:13px;color:#64748b;margin-bottom:32px}
+.phase-label{font-family:'Rubik';font-size:18px;font-weight:700;color:#00796B;text-align:center;margin-bottom:20px;padding:8px 0;border-bottom:1px solid #1e293b}
+.row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.wrap{display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Rubik';font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:4px}
+.desc{font-size:11px;color:#64748b;margin-bottom:12px;text-align:center}
+.material-symbols-rounded{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.filled{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+
+/* Phone */
+.phone{width:360px;height:780px;border-radius:38px;overflow:hidden;position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04);background:#F5F6F8}
+.scr{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;-ms-overflow-style:none;scrollbar-width:none}
+.scr::-webkit-scrollbar{display:none}
+
+/* Status */
+.sb{display:flex;justify-content:space-between;align-items:center;padding:12px 24px 4px;font-size:14px;font-weight:700}
+.sb.light{color:#fff}.sb.dark{color:#1F2937}
+.si{display:flex;gap:4px;align-items:center}
+.si .material-symbols-rounded{font-size:16px;font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 20}
+
+/* Vars */
+:root{--teal:#00796B;--teal-l:#E0F2F1;--teal-d:#004D40;--amber:#FFA000;--amber-l:#FFF3E0;
+  --indigo:#5C6BC0;--indigo-l:#E8EAF6;--red:#DC2626;--red-l:#FEE2E2;--green:#16A34A;--green-l:#DCFCE7;
+  --bg:#F5F6F8;--card:#fff;--txt:#1F2937;--txt2:#6B7280;--txt3:#9CA3AF;--brd:#F0F0F0}
+
+/* ===== AUTH SCREENS ===== */
+
+/* Phone Input */
+.auth-bg{background:var(--teal);height:100%;display:flex;flex-direction:column}
+.auth-top{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px 20px}
+.auth-logo{width:64px;height:64px;background:rgba(255,255,255,0.15);border-radius:18px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;backdrop-filter:blur(8px)}
+.auth-logo .material-symbols-rounded{font-size:32px;color:#fff;font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 48}
+.auth-title{font-family:'Rubik';font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
+.auth-sub{font-size:14px;color:rgba(255,255,255,0.7);text-align:center;line-height:1.4}
+.auth-card{background:#fff;border-radius:24px 24px 0 0;padding:28px 22px 32px}
+.auth-card h3{font-family:'Rubik';font-size:18px;font-weight:700;color:var(--txt);margin-bottom:4px}
+.auth-card p{font-size:13px;color:var(--txt2);margin-bottom:20px;line-height:1.4}
+.inp-label{font-size:12px;font-weight:700;color:var(--txt2);margin-bottom:6px;display:block}
+.phone-row{display:flex;gap:8px;margin-bottom:16px}
+.cc{width:64px;height:48px;background:var(--teal-l);border:2px solid #B2DFDB;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-family:'Rubik';font-size:15px;font-weight:700;color:var(--teal)}
+.ph-field{flex:1;height:48px;background:#F9FAFB;border:2px solid #E5E7EB;border-radius:12px;
+  padding:0 14px;display:flex;align-items:center;font-family:'Rubik';font-size:16px;color:var(--txt3);letter-spacing:1px}
+.btn-p{width:100%;height:50px;background:linear-gradient(135deg,var(--teal),#00695C);color:#fff;border:none;
+  border-radius:14px;font-family:'Rubik';font-size:15px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(0,121,107,0.3)}
+.btn-p .material-symbols-rounded{font-size:18px}
+.auth-ft{text-align:center;font-size:12px;color:var(--txt3);margin-top:14px}
+.auth-ft a{color:var(--teal);font-weight:700;text-decoration:none}
+
+/* OTP */
+.otp-scr{background:#fff;height:100%}
+.otp-hdr{padding:6px 14px;display:flex;align-items:center}
+.otp-back{width:36px;height:36px;border-radius:10px;background:var(--bg);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.otp-back .material-symbols-rounded{font-size:20px;color:var(--txt)}
+.otp-cnt{padding:16px 22px;text-align:center}
+.otp-icon{width:68px;height:68px;border-radius:20px;background:var(--teal-l);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.otp-icon .material-symbols-rounded{font-size:34px;color:var(--teal);font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48}
+.otp-cnt h2{font-family:'Rubik';font-size:22px;font-weight:700;color:var(--txt);margin-bottom:6px}
+.otp-cnt .sub{font-size:13px;color:var(--txt2)}
+.otp-phone{font-family:'Rubik';font-size:15px;font-weight:700;color:var(--teal);margin:4px 0 24px;display:block}
+.otp-boxes{display:flex;gap:10px;justify-content:center;margin-bottom:24px}
+.otp-box{width:46px;height:54px;background:var(--bg);border:2px solid #E5E7EB;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-family:'Rubik';font-size:24px;font-weight:700;color:var(--txt)}
+.otp-box.active{border-color:var(--teal);background:var(--teal-l)}
+.otp-box.filled{border-color:var(--teal);color:var(--teal)}
+.timer{font-size:13px;color:var(--txt3);margin-bottom:24px}
+.timer strong{color:var(--teal);font-weight:700}
+.otp-act{padding:0 22px}
+
+/* Register */
+.reg-scr{background:#fff;height:100%;padding:22px}
+.reg-scr h1{font-family:'Rubik';font-size:26px;font-weight:800;color:var(--txt);margin:40px 0 6px}
+.reg-scr .sub{font-size:14px;color:var(--txt2);margin-bottom:28px}
+.field-label{font-size:12px;font-weight:700;color:var(--txt2);margin-bottom:6px}
+.field-input{width:100%;height:48px;background:#F9FAFB;border:2px solid #E5E7EB;border-radius:12px;
+  padding:0 14px;display:flex;align-items:center;font-size:15px;color:var(--txt);margin-bottom:16px}
+.field-input.filled{border-color:var(--teal);color:var(--txt)}
+.field-input.empty{color:var(--txt3)}
+
+/* ===== PRODUCT SCREENS ===== */
+
+/* Top bar shared */
+.top{background:var(--teal);padding:0 16px 14px;border-radius:0 0 20px 20px}
+.top-row{display:flex;align-items:center;justify-content:space-between;padding-top:2px;margin-bottom:10px}
+.top h2{font-family:'Rubik';font-size:19px;font-weight:700;color:#fff}
+.top-actions{display:flex;gap:6px}
+.hbtn{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.15);border:none;color:#fff;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px)}
+.hbtn .material-symbols-rounded{font-size:20px}
+
+/* Search */
+.search{margin:12px 16px;background:var(--card);border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:8px;
+  box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.search .material-symbols-rounded{font-size:20px;color:var(--txt3)}
+.search span{font-size:13px;color:var(--txt3)}
+
+/* Product list item */
+.p-list{padding:0 16px}
+.p-item{display:flex;align-items:center;padding:12px;background:var(--card);border-radius:14px;margin-bottom:8px;gap:10px;
+  box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.p-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.p-icon .material-symbols-rounded{font-size:22px;font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+.p-info{flex:1;min-width:0}
+.p-name{font-size:13px;font-weight:700;color:var(--txt)}
+.p-meta{font-size:11px;color:var(--txt3);margin-top:1px}
+.p-right{text-align:right;flex-shrink:0}
+.p-price{font-family:'Rubik';font-size:15px;font-weight:700;color:var(--teal)}
+.p-stock{font-size:10px;font-weight:600;padding:2px 6px;border-radius:6px;display:inline-block;margin-top:2px}
+.p-stock.ok{background:var(--teal-l);color:var(--teal)}
+.p-stock.low{background:var(--amber-l);color:#E65100}
+.p-stock.crit{background:var(--red-l);color:var(--red)}
+
+/* FAB */
+.fab{position:absolute;bottom:80px;right:18px;width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--amber),#FF8F00);color:#fff;display:flex;align-items:center;
+  justify-content:center;border:none;box-shadow:0 4px 16px rgba(255,160,0,0.35);cursor:pointer}
+.fab .material-symbols-rounded{font-size:26px;font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24}
+
+/* Bottom nav */
+.bnav{position:absolute;bottom:0;left:0;right:0;background:#fff;display:flex;padding:6px 4px 24px;
+  justify-content:space-around;border-top:1px solid var(--brd)}
+.ni{display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:none;padding:5px 12px;border-radius:10px;cursor:pointer}
+.ni .material-symbols-rounded{font-size:22px;color:var(--txt3);font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.ni span:last-child{font-size:9px;font-weight:700;color:var(--txt3)}
+.ni.active{background:var(--teal-l)}
+.ni.active .material-symbols-rounded{color:var(--teal);font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24}
+.ni.active span:last-child{color:var(--teal)}
+
+/* Add Product Form */
+.form-bar{display:flex;align-items:center;gap:10px;padding:6px 16px}
+.form-back{width:36px;height:36px;border-radius:10px;background:var(--card);border:none;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,0.06)}
+.form-back .material-symbols-rounded{font-size:20px;color:var(--txt)}
+.form-title{font-family:'Rubik';font-size:17px;font-weight:700;color:var(--txt)}
+.form-body{padding:8px 16px}
+.form-field{margin-bottom:14px}
+.form-field label{font-size:12px;font-weight:700;color:var(--txt2);display:block;margin-bottom:4px}
+.form-input{width:100%;height:46px;background:#fff;border:2px solid #E5E7EB;border-radius:12px;
+  padding:0 12px;display:flex;align-items:center;font-size:14px;color:var(--txt)}
+.form-input.placeholder{color:var(--txt3)}
+.form-input.filled{border-color:var(--teal)}
+.form-row{display:flex;gap:10px}
+.form-row .form-field{flex:1}
+.btn-save{width:calc(100% - 32px);height:50px;background:linear-gradient(135deg,var(--teal),#00695C);
+  color:#fff;border:none;border-radius:14px;font-family:'Rubik';font-size:15px;font-weight:700;
+  margin:8px 16px;cursor:pointer;box-shadow:0 4px 14px rgba(0,121,107,0.25)}
+
+/* Detail */
+.det-img{width:calc(100% - 32px);height:160px;margin:8px 16px;background:linear-gradient(135deg,var(--teal-l),#B2DFDB);
+  border-radius:18px;display:flex;align-items:center;justify-content:center}
+.det-img .material-symbols-rounded{font-size:64px;color:var(--teal);opacity:0.25;font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 48}
+.det-info{background:var(--card);border-radius:22px 22px 0 0;margin-top:-14px;position:relative;z-index:1;padding:20px 18px}
+.badge-row{display:flex;gap:6px;margin-bottom:10px}
+.badge{padding:3px 10px;border-radius:7px;font-size:11px;font-weight:700}
+.badge.cat{background:var(--teal-l);color:var(--teal)}
+.badge.stock{background:var(--green-l);color:var(--green)}
+.det-name{font-family:'Rubik';font-size:20px;font-weight:700;color:var(--txt);margin-bottom:2px}
+.det-bc{font-size:12px;color:var(--txt3);margin-bottom:16px}
+.det-price{font-family:'Rubik';font-size:28px;font-weight:700;color:var(--teal);margin-right:10px}
+.det-cost{font-size:13px;color:var(--txt3);text-decoration:line-through}
+.stats{display:flex;gap:8px;margin:16px 0}
+.stat{flex:1;background:var(--bg);border-radius:12px;padding:12px;text-align:center}
+.stat-val{font-family:'Rubik';font-size:18px;font-weight:700;color:var(--txt)}
+.stat-lbl{font-size:10px;font-weight:600;color:var(--txt3);margin-top:2px}
+.det-btns{display:flex;gap:8px}
+.btn-edit{flex:1;height:46px;background:var(--bg);border:none;border-radius:12px;font-family:'Rubik';
+  font-size:14px;font-weight:700;color:var(--txt);display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.btn-sell{flex:2;height:46px;background:linear-gradient(135deg,var(--teal),#00695C);border:none;border-radius:12px;
+  font-family:'Rubik';font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;gap:4px;
+  cursor:pointer;box-shadow:0 4px 14px rgba(0,121,107,0.2)}
+.btn-edit .material-symbols-rounded,.btn-sell .material-symbols-rounded{font-size:18px}
+
+/* Sync badge */
+.sync-badge{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:8px;font-size:10px;font-weight:700;
+  background:var(--amber-l);color:#E65100;margin-left:8px}
+</style>
+</head>
+<body>
+
+<div class="page-title">DokonPro — Fresh Retail v2</div>
+<p class="page-sub">Phase 2: Auth + Phase 3: Products</p>
+
+<!-- ===== PHASE 2: AUTH ===== -->
+<div class="phase-label">Phase 2 — Auth Flow</div>
+<div class="row">
+
+<!-- Phone Input -->
+<div class="wrap">
+  <div class="label">Ввод телефона</div>
+  <div class="desc">+992 маска</div>
+  <div class="phone"><div class="scr">
+    <div class="auth-bg">
+      <div class="sb light" style="background:transparent"><span>9:41</span><div class="si"><span class="material-symbols-rounded">signal_cellular_alt</span><span class="material-symbols-rounded">wifi</span><span class="material-symbols-rounded">battery_5_bar</span></div></div>
+      <div class="auth-top">
+        <div class="auth-logo"><span class="material-symbols-rounded">storefront</span></div>
+        <div class="auth-title">ДоконПро</div>
+        <div class="auth-sub">Управление магазином<br>в одном приложении</div>
+      </div>
+      <div class="auth-card">
+        <h3>Вход в аккаунт</h3>
+        <p>Введите номер телефона для получения кода подтверждения</p>
+        <span class="inp-label">Номер телефона</span>
+        <div class="phone-row"><div class="cc">+992</div><div class="ph-field">90 123 4567</div></div>
+        <button class="btn-p">Получить код <span class="material-symbols-rounded" style="font-size:16px">arrow_forward</span></button>
+        <div class="auth-ft">Нет аккаунта? <a href="#">Регистрация</a></div>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- OTP -->
+<div class="wrap">
+  <div class="label">Код OTP</div>
+  <div class="desc">6 цифр, таймер 60с</div>
+  <div class="phone"><div class="scr">
+    <div class="otp-scr">
+      <div class="sb dark" style="background:#fff"><span>9:41</span><div class="si"><span class="material-symbols-rounded">signal_cellular_alt</span><span class="material-symbols-rounded">wifi</span><span class="material-symbols-rounded">battery_5_bar</span></div></div>
+      <div class="otp-hdr"><button class="otp-back"><span class="material-symbols-rounded">arrow_back</span></button></div>
+      <div class="otp-cnt">
+        <div class="otp-icon"><span class="material-symbols-rounded">sms</span></div>
+        <h2>Введите код</h2>
+        <div class="sub">Код отправлен на номер</div>
+        <span class="otp-phone">+992 90 123 4567</span>
+        <div class="otp-boxes">
+          <div class="otp-box filled">1</div><div class="otp-box filled">2</div><div class="otp-box filled">3</div>
+          <div class="otp-box active"></div><div class="otp-box"></div><div class="otp-box"></div>
+        </div>
+        <div class="timer">Отправить повторно через <strong>0:45</strong></div>
+      </div>
+      <div class="otp-act"><button class="btn-p">Подтвердить <span class="material-symbols-rounded" style="font-size:16px">check</span></button></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- Register -->
+<div class="wrap">
+  <div class="label">Регистрация</div>
+  <div class="desc">Имя + название магазина</div>
+  <div class="phone"><div class="scr">
+    <div class="reg-scr">
+      <div class="sb dark" style="background:#fff"><span>9:41</span><div class="si"><span class="material-symbols-rounded">signal_cellular_alt</span><span class="material-symbols-rounded">wifi</span><span class="material-symbols-rounded">battery_5_bar</span></div></div>
+      <h1>Добро пожаловать!</h1>
+      <div class="sub">Настройте свой профиль для начала работы</div>
+      <span class="field-label">Ваше имя</span>
+      <div class="field-input filled">Латиф Раджабов</div>
+      <span class="field-label">Название магазина</span>
+      <div class="field-input filled">Магазин "Барака"</div>
+      <div style="height:260px"></div>
+      <button class="btn-p">Начать работу <span class="material-symbols-rounded" style="font-size:16px">arrow_forward</span></button>
+    </div>
+  </div></div>
+</div>
+
+</div>
+
+<!-- ===== PHASE 3: PRODUCTS ===== -->
+<div class="phase-label">Phase 3 — Products + Sync</div>
+<div class="row">
+
+<!-- Product List -->
+<div class="wrap">
+  <div class="label">Список товаров</div>
+  <div class="desc">Поиск, FAB, sync badge</div>
+  <div class="phone"><div class="scr">
+    <div style="background:var(--teal)">
+      <div class="sb light" style="background:transparent"><span>9:41</span><div class="si"><span class="material-symbols-rounded">signal_cellular_alt</span><span class="material-symbols-rounded">wifi</span><span class="material-symbols-rounded">battery_5_bar</span></div></div>
+      <div class="top">
+        <div class="top-row">
+          <div style="display:flex;align-items:center">
+            <h2>Товары</h2>
+            <span class="sync-badge"><span class="material-symbols-rounded" style="font-size:12px;font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 20">sync</span> 2</span>
+          </div>
+          <div class="top-actions"><button class="hbtn"><span class="material-symbols-rounded">filter_list</span></button></div>
+        </div>
+      </div>
+    </div>
+    <div class="search"><span class="material-symbols-rounded">search</span><span>Поиск по названию или штрихкоду…</span></div>
+
+    <div class="p-list">
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--teal-l)"><span class="material-symbols-rounded" style="color:var(--teal)">local_drink</span></div>
+        <div class="p-info"><div class="p-name">Coca-Cola 1.5л</div><div class="p-meta">5449000000439</div></div>
+        <div class="p-right"><div class="p-price">12.50 с</div><span class="p-stock ok">48 шт</span></div>
+      </div>
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--amber-l)"><span class="material-symbols-rounded" style="color:#E65100">bakery_dining</span></div>
+        <div class="p-info"><div class="p-name">Нон тоҷикӣ</div><div class="p-meta">8901234567890</div></div>
+        <div class="p-right"><div class="p-price">3.00 с</div><span class="p-stock ok">120 шт</span></div>
+      </div>
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--indigo-l)"><span class="material-symbols-rounded" style="color:var(--indigo)">rice_bowl</span></div>
+        <div class="p-info"><div class="p-name">Рис Басмати 1кг</div><div class="p-meta">6291100890125</div></div>
+        <div class="p-right"><div class="p-price">28.00 с</div><span class="p-stock ok">65 шт</span></div>
+      </div>
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--red-l)"><span class="material-symbols-rounded" style="color:var(--red)">water_drop</span></div>
+        <div class="p-info"><div class="p-name">Масло подсолнечное 1л</div><div class="p-meta">4607001234567</div></div>
+        <div class="p-right"><div class="p-price">22.00 с</div><span class="p-stock crit">5 шт</span></div>
+      </div>
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--green-l)"><span class="material-symbols-rounded" style="color:var(--green)">local_cafe</span></div>
+        <div class="p-info"><div class="p-name">Чай зелёный 100г</div><div class="p-meta">4600051234568</div></div>
+        <div class="p-right"><div class="p-price">8.50 с</div><span class="p-stock ok">34 шт</span></div>
+      </div>
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--amber-l)"><span class="material-symbols-rounded" style="color:#E65100">egg</span></div>
+        <div class="p-info"><div class="p-name">Яйца 10 шт</div><div class="p-meta">4607012345678</div></div>
+        <div class="p-right"><div class="p-price">15.00 с</div><span class="p-stock low">12 шт</span></div>
+      </div>
+      <div class="p-item">
+        <div class="p-icon" style="background:var(--teal-l)"><span class="material-symbols-rounded" style="color:var(--teal)">cookie</span></div>
+        <div class="p-info"><div class="p-name">Печенье "Юбилейное"</div><div class="p-meta">4600012345670</div></div>
+        <div class="p-right"><div class="p-price">18.00 с</div><span class="p-stock ok">28 шт</span></div>
+      </div>
+    </div>
+    <div style="height:100px"></div>
+    <button class="fab"><span class="material-symbols-rounded">add</span></button>
+    <div class="bnav">
+      <button class="ni"><span class="material-symbols-rounded">home</span><span>Главная</span></button>
+      <button class="ni"><span class="material-symbols-rounded">point_of_sale</span><span>Касса</span></button>
+      <button class="ni active"><span class="material-symbols-rounded">inventory_2</span><span>Товары</span></button>
+      <button class="ni"><span class="material-symbols-rounded">account_balance_wallet</span><span>Финансы</span></button>
+      <button class="ni"><span class="material-symbols-rounded">more_horiz</span><span>Ещё</span></button>
+    </div>
+  </div></div>
+</div>
+
+<!-- Add Product -->
+<div class="wrap">
+  <div class="label">Добавить товар</div>
+  <div class="desc">Форма с полями</div>
+  <div class="phone"><div class="scr">
+    <div class="sb dark" style="background:var(--bg)"><span>9:41</span><div class="si"><span class="material-symbols-rounded">signal_cellular_alt</span><span class="material-symbols-rounded">wifi</span><span class="material-symbols-rounded">battery_5_bar</span></div></div>
+    <div class="form-bar">
+      <button class="form-back"><span class="material-symbols-rounded">arrow_back</span></button>
+      <span class="form-title">Добавить товар</span>
+    </div>
+    <div class="form-body">
+      <div class="form-field"><label>Название</label><div class="form-input filled">Сахар "Кристалл" 1кг</div></div>
+      <div class="form-field"><label>Штрихкод</label><div class="form-input filled">4601234567890</div></div>
+      <div class="form-row">
+        <div class="form-field"><label>Цена продажи</label><div class="form-input filled">14.50</div></div>
+        <div class="form-field"><label>Себестоимость</label><div class="form-input filled">10.00</div></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Количество</label><div class="form-input filled">200</div></div>
+        <div class="form-field"><label>Единица</label><div class="form-input filled">кг</div></div>
+      </div>
+      <div class="form-field"><label>Категория</label>
+        <div class="form-input" style="justify-content:space-between">
+          <span style="color:var(--txt)">Бакалея</span>
+          <span class="material-symbols-rounded" style="font-size:18px;color:var(--txt3)">expand_more</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn-save">Сохранить</button>
+  </div></div>
+</div>
+
+<!-- Product Detail -->
+<div class="wrap">
+  <div class="label">Карточка товара</div>
+  <div class="desc">Статы + действия</div>
+  <div class="phone"><div class="scr">
+    <div style="background:var(--bg)">
+      <div class="sb dark" style="background:var(--bg)"><span>9:41</span><div class="si"><span class="material-symbols-rounded">signal_cellular_alt</span><span class="material-symbols-rounded">wifi</span><span class="material-symbols-rounded">battery_5_bar</span></div></div>
+      <div class="form-bar">
+        <button class="form-back"><span class="material-symbols-rounded">arrow_back</span></button>
+        <span class="form-title">Товар</span>
+        <div style="margin-left:auto;display:flex;gap:6px">
+          <button class="form-back"><span class="material-symbols-rounded" style="font-size:18px">share</span></button>
+          <button class="form-back"><span class="material-symbols-rounded" style="font-size:18px">more_vert</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="det-img"><span class="material-symbols-rounded">local_drink</span></div>
+    <div class="det-info">
+      <div class="badge-row"><span class="badge cat">Напитки</span><span class="badge stock">В наличии</span></div>
+      <div class="det-name">Coca-Cola 1.5л</div>
+      <div class="det-bc">Штрихкод: 5449000000439</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px">
+        <span class="det-price">12.50 с</span>
+        <span class="det-cost">8.50 с себест.</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-val">48</div><div class="stat-lbl">На складе</div></div>
+        <div class="stat"><div class="stat-val">156</div><div class="stat-lbl">Продано</div></div>
+        <div class="stat"><div class="stat-val">32%</div><div class="stat-lbl">Маржа</div></div>
+      </div>
+      <div class="det-btns">
+        <button class="btn-edit"><span class="material-symbols-rounded">edit</span> Изменить</button>
+        <button class="btn-sell"><span class="material-symbols-rounded">point_of_sale</span> Продать</button>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+</div>
+
+</body>
+</html>
