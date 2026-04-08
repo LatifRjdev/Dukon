@@ -146,3 +146,35 @@ model Customer {
   @@index([storeId, phone])
   @@map("customers")
 }
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model ExpenseCategory {
+  id           String        @id @default(uuid())
+  name         String
+  storeId      String        @map("store_id")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  transactions Transaction[]
+
+  @@index([storeId])
+  @@map("expense_categories")
+}
+
+model Transaction {
+  id          String          @id @default(uuid())
+  type        TransactionType
+  amount      Float
+  description String?
+  categoryId  String?         @map("category_id")
+  category    ExpenseCategory? @relation(fields: [categoryId], references: [id])
+  storeId     String          @map("store_id")
+  createdAt   DateTime        @default(now()) @map("created_at")
+
+  @@index([storeId])
+  @@index([storeId, type])
+  @@index([storeId, createdAt])
+  @@map("transactions")
+}

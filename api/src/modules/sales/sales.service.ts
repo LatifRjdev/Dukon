@@ -23,7 +23,7 @@ export class SalesService {
         });
       }
 
-      return tx.sale.create({
+      const sale = await tx.sale.create({
         data: {
           totalAmount: dto.totalAmount,
           discount: dto.discount ?? 0,
@@ -42,6 +42,17 @@ export class SalesService {
         },
         include: { items: true },
       });
+
+      await tx.transaction.create({
+        data: {
+          type: 'INCOME',
+          amount: dto.totalAmount,
+          description: `Sale #${sale.id.slice(-8).toUpperCase()}`,
+          storeId,
+        },
+      });
+
+      return sale;
     });
   }
 
