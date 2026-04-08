@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(claude mcp:*)",
+      "Bash(command -v claude)",
+      "Read(//Users/latifrjdev/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(claude plugins:*)",
+      "Bash(curl -s https://api.github.com/repos/affaan-m/everything-claude-code/readme -H \"Accept: application/vnd.github.raw\")",
+      "Bash(curl -s https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill/readme -H \"Accept: application/vnd.github.raw\")",
+      "Bash(curl -s https://api.github.com/repos/thedotmack/claude-mem/readme -H \"Accept: application/vnd.github.raw\")",
+      "Bash(curl -s https://api.github.com/repos/czlonkowski/n8n-mcp/readme -H \"Accept: application/vnd.github.raw\")",
+      "Bash(curl -s https://api.github.com/repos/browser-use/browser-use/readme -H \"Accept: application/vnd.github.raw\")",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//usr/local/**)",
+      "Bash(mkdir -p ~/.claude/skills/browser-use)",
+      "Bash(curl -o ~/.claude/skills/browser-use/SKILL.md https://raw.githubusercontent.com/browser-use/browser-use/main/skills/browser-use/SKILL.md)",
+      "Bash(java -version)",
+      "Bash(docker --version)",
+      "Bash(kotlin -version)"
+    ]
+  }
+}
