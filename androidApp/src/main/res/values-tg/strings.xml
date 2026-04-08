@@ -18,4 +18,23 @@
     <string name="nav_customers">Мизоҷон</string>
     <string name="nav_finance">Молия</string>
     <string name="nav_settings">Танзимот</string>
+    <!-- Auth -->
+    <string name="auth_subtitle">Идоракунии мағоза\nдар як барнома</string>
+    <string name="auth_login_title">Вуруд ба аккаунт</string>
+    <string name="auth_login_subtitle">Рақами телефонро барои гирифтани код ворид кунед</string>
+    <string name="auth_phone_label">Рақами телефон</string>
+    <string name="auth_get_code">Гирифтани код</string>
+    <string name="auth_enter_code">Кодро ворид кунед</string>
+    <string name="auth_code_sent_to">Код ба рақам фиристода шуд</string>
+    <string name="auth_resend_in">Фиристодани такрорӣ баъди</string>
+    <string name="auth_resend_code">Фиристодани такрорӣ</string>
+    <string name="auth_welcome">Хуш омадед!</string>
+    <string name="auth_setup_profile">Профили худро танзим кунед</string>
+    <string name="auth_your_name">Номи шумо</string>
+    <string name="auth_name_hint">Номро ворид кунед</string>
+    <string name="auth_store_name">Номи мағоза</string>
+    <string name="auth_store_hint">Номро ворид кунед</string>
+    <string name="auth_start">Оғоз кардан</string>
+    <string name="auth_no_account">Аккаунт надоред?</string>
+    <string name="auth_register">Бақайдгирӣ</string>
 </resources>

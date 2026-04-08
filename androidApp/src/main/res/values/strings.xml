@@ -18,4 +18,23 @@
     <string name="nav_customers">Клиенты</string>
     <string name="nav_finance">Финансы</string>
     <string name="nav_settings">Настройки</string>
+    <!-- Auth -->
+    <string name="auth_subtitle">Управление магазином\nв одном приложении</string>
+    <string name="auth_login_title">Вход в аккаунт</string>
+    <string name="auth_login_subtitle">Введите номер телефона для получения кода</string>
+    <string name="auth_phone_label">Номер телефона</string>
+    <string name="auth_get_code">Получить код</string>
+    <string name="auth_enter_code">Введите код</string>
+    <string name="auth_code_sent_to">Код отправлен на номер</string>
+    <string name="auth_resend_in">Отправить повторно через</string>
+    <string name="auth_resend_code">Отправить повторно</string>
+    <string name="auth_welcome">Добро пожаловать!</string>
+    <string name="auth_setup_profile">Настройте свой профиль</string>
+    <string name="auth_your_name">Ваше имя</string>
+    <string name="auth_name_hint">Введите имя</string>
+    <string name="auth_store_name">Название магазина</string>
+    <string name="auth_store_hint">Введите название</string>
+    <string name="auth_start">Начать работу</string>
+    <string name="auth_no_account">Нет аккаунта?</string>
+    <string name="auth_register">Регистрация</string>
 </resources>
