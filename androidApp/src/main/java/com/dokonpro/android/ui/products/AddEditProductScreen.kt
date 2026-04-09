@@ -15,24 +15,27 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dokonpro.android.R
+import com.dokonpro.shared.domain.entity.Product
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddEditProductScreen(
+    product: Product? = null,
     onSave: (name: String, barcode: String?, price: Double, costPrice: Double, quantity: Int, unit: String, categoryId: String?) -> Unit,
     onBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf("") }
-    var barcode by remember { mutableStateOf("") }
-    var price by remember { mutableStateOf("") }
-    var costPrice by remember { mutableStateOf("") }
-    var quantity by remember { mutableStateOf("") }
-    var unit by remember { mutableStateOf("\u0448\u0442") }
+    var name by remember { mutableStateOf(product?.name ?: "") }
+    var barcode by remember { mutableStateOf(product?.barcode ?: "") }
+    var price by remember { mutableStateOf(product?.price?.let { if (it > 0.0) it.toString() else "" } ?: "") }
+    var costPrice by remember { mutableStateOf(product?.costPrice?.let { if (it > 0.0) it.toString() else "" } ?: "") }
+    var quantity by remember { mutableStateOf(product?.quantity?.let { if (it > 0) it.toString() else "" } ?: "") }
+    var unit by remember { mutableStateOf(product?.unit ?: "\u0448\u0442") }
+    val isEditing = product != null
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.product_add)) },
+                title = { Text(stringResource(if (isEditing) R.string.product_edit else R.string.product_add)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) }
                 }

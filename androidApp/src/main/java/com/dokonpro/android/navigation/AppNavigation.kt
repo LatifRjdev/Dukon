@@ -50,6 +50,7 @@ object Routes {
     const val PRODUCTS = "products"
     const val PRODUCT_DETAIL = "products/{productId}"
     const val ADD_PRODUCT = "products/add"
+    const val EDIT_PRODUCT = "products/{productId}/edit"
     const val POS = "pos"
     const val CHECKOUT = "pos/checkout"
     const val RECEIPT = "pos/receipt"
@@ -117,7 +118,16 @@ fun AppNavigation() {
             }
         }
         composable(Routes.MAIN) {
-            MainScreen()
+            MainScreen(
+                onNavigateToPOS = { navController.navigate(Routes.POS) },
+                onNavigateToProducts = { navController.navigate(Routes.PRODUCTS) },
+                onNavigateToCustomers = { navController.navigate(Routes.CUSTOMERS) },
+                onNavigateToFinance = { navController.navigate(Routes.FINANCE_DASHBOARD) },
+                onNavigateToSalesHistory = { navController.navigate(Routes.SALES_HISTORY) },
+                onNavigateToStaff = { navController.navigate(Routes.STAFF_LIST) },
+                onNavigateToZakat = { navController.navigate(Routes.ZAKAT) },
+                onNavigateToSettings = { navController.navigate(Routes.SETTINGS) }
+            )
         }
         composable(Routes.PRODUCTS) {
             val viewModel: ProductViewModel = koinViewModel()
@@ -146,8 +156,30 @@ fun AppNavigation() {
             val product = viewModel.state.value.products.find { it.id == productId }
             ProductDetailScreen(
                 product = product, onBack = { navController.popBackStack() },
-                onEdit = { /* edit flow later */ },
+                onEdit = { navController.navigate("products/$productId/edit") },
                 onDelete = { viewModel.removeProduct(productId); navController.popBackStack() }
+            )
+        }
+        composable(Routes.EDIT_PRODUCT) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getString("productId") ?: return@composable
+            val viewModel: ProductViewModel = koinViewModel()
+            val product = viewModel.state.value.products.find { it.id == productId }
+            AddEditProductScreen(
+                product = product,
+                onSave = { name, barcode, price, costPrice, quantity, unit, categoryId ->
+                    product?.let {
+                        viewModel.updateExistingProduct(
+                            it.copy(
+                                name = name, barcode = barcode, price = price,
+                                costPrice = costPrice, quantity = quantity, unit = unit,
+                                categoryId = categoryId,
+                                updatedAt = java.time.Instant.now().toString()
+                            )
+                        )
+                    }
+                    navController.popBackStack()
+                },
+                onBack = { navController.popBackStack() }
             )
         }
         composable(Routes.POS) {

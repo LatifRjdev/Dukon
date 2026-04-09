@@ -78,6 +78,13 @@ class ProductViewModel(
         }
     }
 
+    fun updateExistingProduct(product: Product) {
+        viewModelScope.launch {
+            updateProduct(product)
+                .onFailure { e -> _state.value = _state.value.copy(error = e.message) }
+        }
+    }
+
     fun removeProduct(productId: String) {
         viewModelScope.launch {
             deleteProduct(storeId, productId)
