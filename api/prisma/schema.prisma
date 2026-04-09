@@ -30,8 +30,10 @@ model Store {
   address   String?
   phone     String?
   currency  String     @default("TJS")
-  logoUrl   String?    @map("logo_url")
-  createdAt DateTime   @default(now()) @map("created_at")
+  logoUrl       String?    @map("logo_url")
+  receiptHeader String?    @map("receipt_header")
+  receiptFooter String?    @map("receipt_footer")
+  createdAt     DateTime   @default(now()) @map("created_at")
   updatedAt DateTime   @updatedAt @map("updated_at")
   users     UserStore[]
 

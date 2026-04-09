@@ -9,6 +9,7 @@ import { CustomersModule } from './modules/customers/customers.module';
 import { FinanceModule } from './modules/finance/finance.module';
 import { StaffModule } from './modules/staff/staff.module';
 import { ZakatModule } from './modules/zakat/zakat.module';
+import { StoreSettingsModule } from './modules/store-settings/store-settings.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ZakatModule } from './modules/zakat/zakat.module';
     FinanceModule,
     StaffModule,
     ZakatModule,
+    StoreSettingsModule,
   ],
 })
 export class AppModule {}
