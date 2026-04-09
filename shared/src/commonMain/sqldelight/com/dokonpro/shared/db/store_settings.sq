@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS store_settings (
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    address TEXT,
+    phone TEXT,
+    currency TEXT NOT NULL DEFAULT 'TJS',
+    logo_url TEXT,
+    receipt_header TEXT,
+    receipt_footer TEXT,
+    store_id TEXT NOT NULL UNIQUE
+);
+
+selectByStoreId:
+SELECT * FROM store_settings WHERE store_id = ?;
+
+insertOrReplace:
+INSERT OR REPLACE INTO store_settings (id, name, address, phone, currency, logo_url, receipt_header, receipt_footer, store_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
