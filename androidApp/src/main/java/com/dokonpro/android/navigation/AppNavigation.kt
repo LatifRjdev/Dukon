@@ -22,10 +22,12 @@ import com.dokonpro.android.ui.staff.AddStaffScreen
 import com.dokonpro.android.ui.staff.StaffDetailScreen
 import com.dokonpro.android.ui.staff.StaffListScreen
 import com.dokonpro.android.ui.settings.EditStoreScreen
+import com.dokonpro.android.ui.settings.PrinterSettingsScreen
 import com.dokonpro.android.ui.settings.SettingsScreen
 import com.dokonpro.android.ui.zakat.ZakatHistoryScreen
 import com.dokonpro.android.ui.zakat.ZakatScreen
 import com.dokonpro.android.ui.zakat.ZakatSettingsScreen
+import com.dokonpro.android.service.BluetoothPrinterService
 import com.dokonpro.android.ui.pos.CheckoutScreen
 import com.dokonpro.android.ui.pos.POSScreen
 import com.dokonpro.android.ui.pos.ReceiptScreen
@@ -39,6 +41,7 @@ import com.dokonpro.android.viewmodel.CustomerViewModel
 import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
+import com.dokonpro.android.viewmodel.PrinterViewModel
 import com.dokonpro.android.viewmodel.StaffViewModel
 import com.dokonpro.android.viewmodel.SettingsViewModel
 import com.dokonpro.android.viewmodel.ZakatViewModel
@@ -71,6 +74,7 @@ object Routes {
     const val ZAKAT_SETTINGS = "zakat/settings"
     const val SETTINGS = "settings"
     const val EDIT_STORE = "settings/edit-store"
+    const val PRINTER_SETTINGS = "settings/printer"
 }
 
 @Composable
@@ -226,6 +230,9 @@ fun AppNavigation() {
         composable(Routes.RECEIPT) {
             val viewModel: POSViewModel = koinViewModel()
             val state by viewModel.state.collectAsStateWithLifecycle()
+            val printerViewModel: PrinterViewModel = koinViewModel()
+            val settingsViewModel: SettingsViewModel = koinViewModel()
+            val settingsState by settingsViewModel.state.collectAsStateWithLifecycle()
             val sale = state.completedSale
 
             if (sale != null) {
@@ -235,6 +242,11 @@ fun AppNavigation() {
                         viewModel.clearCompletedSale()
                         navController.navigate(Routes.POS) {
                             popUpTo(Routes.POS) { inclusive = true }
+                        }
+                    },
+                    onPrint = {
+                        settingsState.settings?.let { settings ->
+                            printerViewModel.printReceipt(sale, settings)
                         }
                     },
                     onBack = {
@@ -249,8 +261,17 @@ fun AppNavigation() {
         composable(Routes.SALES_HISTORY) {
             val viewModel: POSViewModel = koinViewModel()
             val sales by viewModel.salesHistory.collectAsStateWithLifecycle()
+            val printerViewModel: PrinterViewModel = koinViewModel()
+            val settingsViewModel: SettingsViewModel = koinViewModel()
+            val settingsState by settingsViewModel.state.collectAsStateWithLifecycle()
             SalesHistoryScreen(
                 sales = sales,
+                onPrintSale = { saleId ->
+                    val sale = sales.find { it.id == saleId }
+                    if (sale != null && settingsState.settings != null) {
+                        printerViewModel.printReceipt(sale, settingsState.settings!!)
+                    }
+                },
                 onBack = { navController.popBackStack() }
             )
         }
@@ -427,6 +448,7 @@ fun AppNavigation() {
                 isLoading = state.isLoading,
                 error = state.error,
                 onEditStore = { navController.navigate(Routes.EDIT_STORE) },
+                onPrinterSettings = { navController.navigate(Routes.PRINTER_SETTINGS) },
                 onLogout = {
                     viewModel.performLogout {
                         navController.navigate(Routes.AUTH) {
@@ -446,6 +468,45 @@ fun AppNavigation() {
                 isSaved = state.isSaved,
                 onSave = viewModel::saveSettings,
                 onSavedAck = viewModel::clearSaved,
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.PRINTER_SETTINGS) {
+            val printerViewModel: PrinterViewModel = koinViewModel()
+            val printerState by printerViewModel.state.collectAsStateWithLifecycle()
+            val printerService: BluetoothPrinterService = org.koin.compose.koinInject()
+            PrinterSettingsScreen(
+                state = printerState,
+                isBluetoothEnabled = printerService.isBluetoothEnabled(),
+                onSelectPrinter = printerViewModel::selectPrinter,
+                onClearPrinter = printerViewModel::clearPrinter,
+                onTestPrint = {
+                    val settingsViewModel: SettingsViewModel = org.koin.java.KoinJavaComponent.get(SettingsViewModel::class.java)
+                    settingsViewModel.state.value.settings?.let { settings ->
+                        val testSale = com.dokonpro.shared.domain.entity.Sale(
+                            id = "test-print-0001",
+                            totalAmount = 100.0,
+                            discount = 0.0,
+                            paymentMethod = com.dokonpro.shared.domain.entity.PaymentMethod.CASH,
+                            customerId = null,
+                            storeId = settings.storeId,
+                            isRefunded = false,
+                            createdAt = java.time.LocalDateTime.now().toString(),
+                            items = listOf(
+                                com.dokonpro.shared.domain.entity.SaleItem(
+                                    id = "test-item-1",
+                                    saleId = "test-print-0001",
+                                    productId = "test-p1",
+                                    name = "Тестовый товар",
+                                    quantity = 1,
+                                    price = 100.0,
+                                    discount = 0.0
+                                )
+                            )
+                        )
+                        printerViewModel.printReceipt(testSale, settings)
+                    }
+                },
                 onBack = { navController.popBackStack() }
             )
         }

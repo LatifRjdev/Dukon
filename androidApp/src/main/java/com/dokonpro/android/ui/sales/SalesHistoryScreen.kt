@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Print
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,6 +39,7 @@ import com.dokonpro.shared.domain.entity.Sale
 @Composable
 fun SalesHistoryScreen(
     sales: List<Sale>,
+    onPrintSale: (String) -> Unit,
     onBack: () -> Unit
 ) {
     Scaffold(
@@ -77,7 +79,10 @@ fun SalesHistoryScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(sales, key = { it.id }) { sale ->
-                    SaleListItem(sale = sale)
+                    SaleListItem(
+                        sale = sale,
+                        onPrint = { onPrintSale(sale.id) }
+                    )
                 }
             }
         }
@@ -85,7 +90,7 @@ fun SalesHistoryScreen(
 }
 
 @Composable
-private fun SaleListItem(sale: Sale) {
+private fun SaleListItem(sale: Sale, onPrint: () -> Unit) {
     val contentColor = if (sale.isRefunded) {
         MaterialTheme.colorScheme.error
     } else {
@@ -156,6 +161,14 @@ private fun SaleListItem(sale: Sale) {
                         fontWeight = FontWeight.Bold
                     )
                 }
+            }
+
+            IconButton(onClick = onPrint) {
+                Icon(
+                    Icons.Default.Print,
+                    contentDescription = stringResource(R.string.printer_print_receipt),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
 
             Text(

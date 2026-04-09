@@ -5,10 +5,12 @@ import com.dokonpro.shared.data.local.DatabaseDriverFactory
 import com.dokonpro.shared.data.local.SessionProvider
 import com.dokonpro.shared.data.local.TokenStorage
 import com.dokonpro.shared.di.sharedModule
+import com.dokonpro.android.service.BluetoothPrinterService
 import com.dokonpro.android.viewmodel.AuthViewModel
 import com.dokonpro.android.viewmodel.CustomerViewModel
 import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
+import com.dokonpro.android.viewmodel.PrinterViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import com.dokonpro.android.viewmodel.SettingsViewModel
 import com.dokonpro.android.viewmodel.StaffViewModel
@@ -38,6 +40,8 @@ class DokonProApp : Application() {
                     viewModel { StaffViewModel(get(), get(), get(), get(), get<SessionProvider>().storeId) }
                     viewModel { ZakatViewModel(get(), get(), get(), get(), get<SessionProvider>().storeId) }
                     viewModel { SettingsViewModel(get(), get(), get(), get<SessionProvider>().storeId) }
+                    single { BluetoothPrinterService(get()) }
+                    viewModel { PrinterViewModel(get()) }
                 }
             )
         }

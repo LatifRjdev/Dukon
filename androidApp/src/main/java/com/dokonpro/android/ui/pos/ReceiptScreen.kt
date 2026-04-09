@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Print
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -34,6 +35,7 @@ import com.dokonpro.shared.domain.entity.Sale
 fun ReceiptScreen(
     sale: Sale,
     onNewSale: () -> Unit,
+    onPrint: () -> Unit,
     onBack: () -> Unit
 ) {
     Column(
@@ -173,6 +175,26 @@ fun ReceiptScreen(
                 text = stringResource(R.string.pos_new_sale),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
+            )
+        }
+
+        Spacer(Modifier.height(12.dp))
+
+        // Print receipt button
+        OutlinedButton(
+            onClick = onPrint,
+            modifier = Modifier.fillMaxWidth().height(48.dp),
+            shape = RoundedCornerShape(14.dp)
+        ) {
+            Icon(
+                Icons.Default.Print,
+                contentDescription = null,
+                modifier = Modifier.size(20.dp)
+            )
+            Text(
+                text = stringResource(R.string.printer_print_receipt),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(start = 8.dp)
             )
         }
 

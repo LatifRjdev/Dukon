@@ -32,6 +32,7 @@ fun SettingsScreen(
     isLoading: Boolean,
     error: String?,
     onEditStore: () -> Unit,
+    onPrinterSettings: () -> Unit,
     onLogout: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -228,7 +229,10 @@ fun SettingsScreen(
 
                 // Bluetooth Printer Section
                 SectionHeader(stringResource(R.string.settings_printer))
-                Card(shape = RoundedCornerShape(16.dp)) {
+                Card(
+                    shape = RoundedCornerShape(16.dp),
+                    onClick = onPrinterSettings
+                ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -237,22 +241,10 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Button(
-                            onClick = {},
-                            enabled = false,
+                            onClick = onPrinterSettings,
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Text(stringResource(R.string.settings_scan_printer))
-                        }
-                        Surface(
-                            shape = RoundedCornerShape(8.dp),
-                            color = MaterialTheme.colorScheme.tertiaryContainer
-                        ) {
-                            Text(
-                                text = stringResource(R.string.settings_coming_soon),
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onTertiaryContainer
-                            )
                         }
                     }
                 }
