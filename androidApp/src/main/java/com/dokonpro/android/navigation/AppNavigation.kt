@@ -21,6 +21,9 @@ import com.dokonpro.android.ui.finance.TransactionListScreen
 import com.dokonpro.android.ui.staff.AddStaffScreen
 import com.dokonpro.android.ui.staff.StaffDetailScreen
 import com.dokonpro.android.ui.staff.StaffListScreen
+import com.dokonpro.android.ui.zakat.ZakatHistoryScreen
+import com.dokonpro.android.ui.zakat.ZakatScreen
+import com.dokonpro.android.ui.zakat.ZakatSettingsScreen
 import com.dokonpro.android.ui.pos.CheckoutScreen
 import com.dokonpro.android.ui.pos.POSScreen
 import com.dokonpro.android.ui.pos.ReceiptScreen
@@ -35,6 +38,7 @@ import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import com.dokonpro.android.viewmodel.StaffViewModel
+import com.dokonpro.android.viewmodel.ZakatViewModel
 import org.koin.androidx.compose.koinViewModel
 
 object Routes {
@@ -57,6 +61,9 @@ object Routes {
     const val STAFF_LIST = "staff"
     const val STAFF_DETAIL = "staff/{staffId}"
     const val ADD_STAFF = "staff/add"
+    const val ZAKAT = "zakat"
+    const val ZAKAT_HISTORY = "zakat/history"
+    const val ZAKAT_SETTINGS = "zakat/settings"
 }
 
 @Composable
@@ -316,6 +323,40 @@ fun AppNavigation() {
                 staff = staff,
                 onChangeRole = { role -> viewModel.changeRole(staffId, role) },
                 onDeactivate = { viewModel.removeStaff(staffId); navController.popBackStack() },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.ZAKAT) {
+            val viewModel: ZakatViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            ZakatScreen(
+                calculation = state.calculation,
+                isLoading = state.isLoading,
+                isSaved = state.isSaved,
+                error = state.error,
+                onCalculate = viewModel::calculate,
+                onSave = viewModel::save,
+                onHistoryClick = { navController.navigate(Routes.ZAKAT_HISTORY) },
+                onSettingsClick = { navController.navigate(Routes.ZAKAT_SETTINGS) }
+            )
+        }
+        composable(Routes.ZAKAT_HISTORY) {
+            val viewModel: ZakatViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            ZakatHistoryScreen(
+                history = state.history,
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.ZAKAT_SETTINGS) {
+            val viewModel: ZakatViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            ZakatSettingsScreen(
+                config = state.config,
+                isLoading = state.isLoading,
+                onSave = { goldRate, silverRate ->
+                    viewModel.updateConfig(goldRate, silverRate)
+                },
                 onBack = { navController.popBackStack() }
             )
         }

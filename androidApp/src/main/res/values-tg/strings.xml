@@ -112,4 +112,22 @@
     <string name="staff_cashier">Кассир</string>
     <string name="staff_change_role">Иваз кардани нақш</string>
     <string name="staff_deactivate">Ғайрифаъол кардан</string>
+    <!-- Zakat -->
+    <string name="zakat_title">Закот</string>
+    <string name="zakat_calculate">Ҳисоб кардан</string>
+    <string name="zakat_save">Нигоҳ доштани ҳисоб</string>
+    <string name="zakat_saved">Ҳисоб нигоҳ дошта шуд</string>
+    <string name="zakat_history">Таърихи ҳисобҳо</string>
+    <string name="zakat_settings">Танзимоти закот</string>
+    <string name="zakat_inventory_value">Арзиши молҳо</string>
+    <string name="zakat_cash_balance">Бақияи пулӣ</string>
+    <string name="zakat_receivables">Қарзи дебиторӣ</string>
+    <string name="zakat_liabilities">Қарзи кредиторӣ</string>
+    <string name="zakat_nisab">Нисоб (ҳадди ақал)</string>
+    <string name="zakat_zakatable">Маблағи андозшаванда</string>
+    <string name="zakat_due">Закот барои пардохт</string>
+    <string name="zakat_gold_rate">Нархи тилло (TJS/грамм)</string>
+    <string name="zakat_silver_rate">Нархи нуқра (TJS/грамм)</string>
+    <string name="zakat_no_history">Ҳисоби нигоҳдошта нест</string>
+    <string name="zakat_rate_info">Нисоб = 85г тилло</string>
 </resources>

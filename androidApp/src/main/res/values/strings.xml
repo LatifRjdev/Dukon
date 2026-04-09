@@ -112,4 +112,22 @@
     <string name="staff_cashier">Кассир</string>
     <string name="staff_change_role">Изменить роль</string>
     <string name="staff_deactivate">Деактивировать</string>
+    <!-- Zakat -->
+    <string name="zakat_title">Закат</string>
+    <string name="zakat_calculate">Рассчитать</string>
+    <string name="zakat_save">Сохранить расчёт</string>
+    <string name="zakat_saved">Расчёт сохранён</string>
+    <string name="zakat_history">История расчётов</string>
+    <string name="zakat_settings">Настройки заката</string>
+    <string name="zakat_inventory_value">Стоимость товаров</string>
+    <string name="zakat_cash_balance">Денежный остаток</string>
+    <string name="zakat_receivables">Дебиторская задолженность</string>
+    <string name="zakat_liabilities">Кредиторская задолженность</string>
+    <string name="zakat_nisab">Нисаб (порог)</string>
+    <string name="zakat_zakatable">Облагаемая сумма</string>
+    <string name="zakat_due">Закат к уплате</string>
+    <string name="zakat_gold_rate">Курс золота (TJS/грамм)</string>
+    <string name="zakat_silver_rate">Курс серебра (TJS/грамм)</string>
+    <string name="zakat_no_history">Нет сохранённых расчётов</string>
+    <string name="zakat_rate_info">Нисаб = 85г золота</string>
 </resources>
