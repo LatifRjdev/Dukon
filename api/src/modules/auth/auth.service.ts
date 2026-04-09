@@ -29,6 +29,7 @@ export class AuthService {
     accessToken: string;
     refreshToken: string;
     isNewUser: boolean;
+    storeId: string | null;
   }> {
     const otp = await this.prisma.otpCode.findFirst({
       where: {
@@ -49,14 +50,18 @@ export class AuthService {
       data: { verified: true },
     });
 
-    const user = await this.prisma.user.findUnique({ where: { phone } });
+    const user = await this.prisma.user.findUnique({
+      where: { phone },
+      include: { stores: { take: 1 } },
+    });
     const isNewUser = !user;
+    const storeId = user?.stores?.[0]?.storeId ?? null;
 
     const tokenPayload = { phone, sub: user?.id ?? 'pending' };
     const accessToken = this.generateAccessToken(tokenPayload);
     const refreshToken = this.generateRefreshToken(tokenPayload);
 
-    return { accessToken, refreshToken, isNewUser };
+    return { accessToken, refreshToken, isNewUser, storeId };
   }
 
   async register(phone: string, name: string, storeName: string): Promise<{
