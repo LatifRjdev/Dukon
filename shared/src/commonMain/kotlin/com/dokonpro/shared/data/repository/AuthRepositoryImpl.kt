@@ -23,6 +23,7 @@ class AuthRepositoryImpl(
         val tokens = AuthTokens(response.accessToken, response.refreshToken)
         if (!response.isNewUser) {
             tokenStorage.saveTokens(tokens)
+            response.storeId?.let { tokenStorage.saveStoreId(it) }
         }
         VerifyOtpResult(tokens = tokens, isNewUser = response.isNewUser)
     }
@@ -31,6 +32,7 @@ class AuthRepositoryImpl(
         val response = api.register(phone, name, storeName)
         val tokens = AuthTokens(response.accessToken, response.refreshToken)
         tokenStorage.saveTokens(tokens)
+        tokenStorage.saveStoreId(response.store.id)
         RegisterResult(
             tokens = tokens,
             user = User(id = response.user.id, phone = response.user.phone, name = response.user.name),
@@ -47,6 +49,7 @@ class AuthRepositoryImpl(
     }
 
     override suspend fun logout() {
+        tokenStorage.clearStoreId()
         tokenStorage.clearTokens()
     }
 

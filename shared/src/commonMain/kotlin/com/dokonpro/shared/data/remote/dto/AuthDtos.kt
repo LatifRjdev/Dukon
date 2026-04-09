@@ -15,7 +15,8 @@ data class VerifyOtpRequest(val phone: String, val code: String)
 data class VerifyOtpResponse(
     val accessToken: String,
     val refreshToken: String,
-    val isNewUser: Boolean
+    val isNewUser: Boolean,
+    val storeId: String? = null
 )
 
 @Serializable

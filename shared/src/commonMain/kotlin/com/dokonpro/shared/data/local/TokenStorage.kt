@@ -7,4 +7,7 @@ expect class TokenStorage {
     fun getTokens(): AuthTokens?
     fun clearTokens()
     fun hasTokens(): Boolean
+    fun saveStoreId(storeId: String)
+    fun getStoreId(): String?
+    fun clearStoreId()
 }

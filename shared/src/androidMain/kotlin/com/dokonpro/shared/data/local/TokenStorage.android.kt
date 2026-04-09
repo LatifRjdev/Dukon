@@ -36,4 +36,14 @@ actual class TokenStorage(context: Context) {
     }
 
     actual fun hasTokens(): Boolean = prefs.getString("access_token", null) != null
+
+    actual fun saveStoreId(storeId: String) {
+        prefs.edit().putString("store_id", storeId).apply()
+    }
+
+    actual fun getStoreId(): String? = prefs.getString("store_id", null)
+
+    actual fun clearStoreId() {
+        prefs.edit().remove("store_id").apply()
+    }
 }

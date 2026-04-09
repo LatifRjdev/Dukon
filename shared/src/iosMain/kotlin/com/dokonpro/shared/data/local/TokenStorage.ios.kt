@@ -23,4 +23,14 @@ actual class TokenStorage {
     }
 
     actual fun hasTokens(): Boolean = defaults.stringForKey("access_token") != null
+
+    actual fun saveStoreId(storeId: String) {
+        defaults.setObject(storeId, "store_id")
+    }
+
+    actual fun getStoreId(): String? = defaults.stringForKey("store_id")
+
+    actual fun clearStoreId() {
+        defaults.removeObjectForKey("store_id")
+    }
 }
