@@ -45,6 +45,7 @@ import com.dokonpro.android.viewmodel.PrinterViewModel
 import com.dokonpro.android.viewmodel.StaffViewModel
 import com.dokonpro.android.viewmodel.SettingsViewModel
 import com.dokonpro.android.viewmodel.ZakatViewModel
+import com.dokonpro.shared.data.sync.SyncStatus
 import org.koin.androidx.compose.koinViewModel
 
 object Routes {
@@ -123,7 +124,11 @@ fun AppNavigation() {
             }
         }
         composable(Routes.MAIN) {
+            val syncStatus = org.koin.java.KoinJavaComponent.get<SyncStatus>(SyncStatus::class.java)
+            val syncData by syncStatus.status.collectAsStateWithLifecycle()
             MainScreen(
+                syncState = syncData.state,
+                pendingCount = syncData.pendingCount,
                 onNavigateToPOS = { navController.navigate(Routes.POS) },
                 onNavigateToProducts = { navController.navigate(Routes.PRODUCTS) },
                 onNavigateToCustomers = { navController.navigate(Routes.CUSTOMERS) },
