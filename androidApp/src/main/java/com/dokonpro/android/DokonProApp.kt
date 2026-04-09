@@ -9,6 +9,7 @@ import com.dokonpro.android.viewmodel.CustomerViewModel
 import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
+import com.dokonpro.android.viewmodel.SettingsViewModel
 import com.dokonpro.android.viewmodel.StaffViewModel
 import com.dokonpro.android.viewmodel.ZakatViewModel
 import org.koin.android.ext.koin.androidContext
@@ -35,6 +36,7 @@ class DokonProApp : Application() {
                     viewModel { FinanceViewModel(get(), get(), get(), get(), "default-store") }
                     viewModel { StaffViewModel(get(), get(), get(), get(), "default-store") }
                     viewModel { ZakatViewModel(get(), get(), get(), get(), "default-store") }
+                    viewModel { SettingsViewModel(get(), get(), get(), "default-store") }
                 }
             )
         }

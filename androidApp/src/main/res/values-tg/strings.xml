@@ -130,4 +130,24 @@
     <string name="zakat_silver_rate">Нархи нуқра (TJS/грамм)</string>
     <string name="zakat_no_history">Ҳисоби нигоҳдошта нест</string>
     <string name="zakat_rate_info">Нисоб = 85г тилло</string>
+    <!-- Settings -->
+    <string name="settings_title">Танзимот</string>
+    <string name="settings_store_profile">Профили мағоза</string>
+    <string name="settings_edit_store">Таҳрири мағоза</string>
+    <string name="settings_language">Забон</string>
+    <string name="settings_language_ru">Русский</string>
+    <string name="settings_language_tg">Тоҷикӣ</string>
+    <string name="settings_currency">Асъор</string>
+    <string name="settings_receipt">Чек</string>
+    <string name="settings_receipt_header">Сарлавҳаи чек</string>
+    <string name="settings_receipt_footer">Имзои чек</string>
+    <string name="settings_printer">Принтери Bluetooth</string>
+    <string name="settings_scan_printer">Сканер кардан</string>
+    <string name="settings_coming_soon">Ба зудӣ</string>
+    <string name="settings_about">Дар бораи барнома</string>
+    <string name="settings_version">Версия</string>
+    <string name="settings_logout">Баромадан</string>
+    <string name="settings_store_name">Номи мағоза</string>
+    <string name="settings_store_address">Суроға</string>
+    <string name="settings_store_phone">Телефон</string>
 </resources>

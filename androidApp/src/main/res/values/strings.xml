@@ -130,4 +130,24 @@
     <string name="zakat_silver_rate">Курс серебра (TJS/грамм)</string>
     <string name="zakat_no_history">Нет сохранённых расчётов</string>
     <string name="zakat_rate_info">Нисаб = 85г золота</string>
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_store_profile">Профиль магазина</string>
+    <string name="settings_edit_store">Редактировать магазин</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_language_ru">Русский</string>
+    <string name="settings_language_tg">Тоҷикӣ</string>
+    <string name="settings_currency">Валюта</string>
+    <string name="settings_receipt">Чек</string>
+    <string name="settings_receipt_header">Заголовок чека</string>
+    <string name="settings_receipt_footer">Подпись чека</string>
+    <string name="settings_printer">Bluetooth принтер</string>
+    <string name="settings_scan_printer">Сканировать</string>
+    <string name="settings_coming_soon">Скоро</string>
+    <string name="settings_about">О приложении</string>
+    <string name="settings_version">Версия</string>
+    <string name="settings_logout">Выйти</string>
+    <string name="settings_store_name">Название магазина</string>
+    <string name="settings_store_address">Адрес</string>
+    <string name="settings_store_phone">Телефон</string>
 </resources>

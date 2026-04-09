@@ -21,6 +21,8 @@ import com.dokonpro.android.ui.finance.TransactionListScreen
 import com.dokonpro.android.ui.staff.AddStaffScreen
 import com.dokonpro.android.ui.staff.StaffDetailScreen
 import com.dokonpro.android.ui.staff.StaffListScreen
+import com.dokonpro.android.ui.settings.EditStoreScreen
+import com.dokonpro.android.ui.settings.SettingsScreen
 import com.dokonpro.android.ui.zakat.ZakatHistoryScreen
 import com.dokonpro.android.ui.zakat.ZakatScreen
 import com.dokonpro.android.ui.zakat.ZakatSettingsScreen
@@ -38,6 +40,7 @@ import com.dokonpro.android.viewmodel.FinanceViewModel
 import com.dokonpro.android.viewmodel.POSViewModel
 import com.dokonpro.android.viewmodel.ProductViewModel
 import com.dokonpro.android.viewmodel.StaffViewModel
+import com.dokonpro.android.viewmodel.SettingsViewModel
 import com.dokonpro.android.viewmodel.ZakatViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -64,6 +67,8 @@ object Routes {
     const val ZAKAT = "zakat"
     const val ZAKAT_HISTORY = "zakat/history"
     const val ZAKAT_SETTINGS = "zakat/settings"
+    const val SETTINGS = "settings"
+    const val EDIT_STORE = "settings/edit-store"
 }
 
 @Composable
@@ -357,6 +362,36 @@ fun AppNavigation() {
                 onSave = { goldRate, silverRate ->
                     viewModel.updateConfig(goldRate, silverRate)
                 },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.SETTINGS) {
+            val viewModel: SettingsViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            SettingsScreen(
+                settings = state.settings,
+                isLoading = state.isLoading,
+                error = state.error,
+                onEditStore = { navController.navigate(Routes.EDIT_STORE) },
+                onLogout = {
+                    viewModel.performLogout {
+                        navController.navigate(Routes.AUTH) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.EDIT_STORE) {
+            val viewModel: SettingsViewModel = koinViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            EditStoreScreen(
+                settings = state.settings,
+                isLoading = state.isLoading,
+                isSaved = state.isSaved,
+                onSave = viewModel::saveSettings,
+                onSavedAck = viewModel::clearSaved,
                 onBack = { navController.popBackStack() }
             )
         }
