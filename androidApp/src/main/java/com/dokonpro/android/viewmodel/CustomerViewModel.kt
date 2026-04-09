@@ -65,6 +65,13 @@ class CustomerViewModel(
         }
     }
 
+    fun updateExistingCustomer(customer: Customer) {
+        viewModelScope.launch {
+            updateCustomer(customer)
+                .onFailure { _listState.value = _listState.value.copy(error = it.message) }
+        }
+    }
+
     fun loadCustomerDetail(customerId: String) {
         viewModelScope.launch {
             _detailState.value = CustomerDetailState(isLoading = true)

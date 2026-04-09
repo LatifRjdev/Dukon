@@ -11,15 +11,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dokonpro.android.R
+import com.dokonpro.shared.domain.entity.Customer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddEditCustomerScreen(onSave: (name: String, phone: String?, email: String?, notes: String?) -> Unit, onBack: () -> Unit) {
-    var name by remember { mutableStateOf("") }
-    var phone by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var notes by remember { mutableStateOf("") }
-    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.customer_add)) },
+fun AddEditCustomerScreen(customer: Customer? = null, onSave: (name: String, phone: String?, email: String?, notes: String?) -> Unit, onBack: () -> Unit) {
+    var name by remember { mutableStateOf(customer?.name ?: "") }
+    var phone by remember { mutableStateOf(customer?.phone ?: "") }
+    var email by remember { mutableStateOf(customer?.email ?: "") }
+    var notes by remember { mutableStateOf(customer?.notes ?: "") }
+    val isEditing = customer != null
+    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(if (isEditing) R.string.product_edit else R.string.customer_add)) },
         navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }
     ) { padding ->
         Column(Modifier.padding(padding).padding(horizontal = 16.dp)) {

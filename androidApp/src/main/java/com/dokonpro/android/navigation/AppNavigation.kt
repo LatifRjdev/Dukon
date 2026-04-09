@@ -58,6 +58,7 @@ object Routes {
     const val CUSTOMERS = "customers"
     const val CUSTOMER_DETAIL = "customers/{customerId}"
     const val ADD_CUSTOMER = "customers/add"
+    const val EDIT_CUSTOMER = "customers/{customerId}/edit"
     const val FINANCE_DASHBOARD = "finance"
     const val FINANCE_TRANSACTIONS = "finance/transactions"
     const val FINANCE_ADD_EXPENSE = "finance/add-expense"
@@ -285,7 +286,28 @@ fun AppNavigation() {
                 purchases = state.purchases,
                 isLoading = state.isLoading,
                 onBack = { navController.popBackStack() },
-                onEdit = { /* edit flow later */ }
+                onEdit = { navController.navigate("customers/$customerId/edit") }
+            )
+        }
+        composable(Routes.EDIT_CUSTOMER) { backStackEntry ->
+            val customerId = backStackEntry.arguments?.getString("customerId") ?: return@composable
+            val viewModel: CustomerViewModel = koinViewModel()
+            val state by viewModel.detailState.collectAsStateWithLifecycle()
+            LaunchedEffect(customerId) { viewModel.loadCustomerDetail(customerId) }
+            AddEditCustomerScreen(
+                customer = state.customer,
+                onSave = { name, phone, email, notes ->
+                    state.customer?.let {
+                        viewModel.updateExistingCustomer(
+                            it.copy(
+                                name = name, phone = phone, email = email, notes = notes,
+                                updatedAt = java.time.Instant.now().toString()
+                            )
+                        )
+                    }
+                    navController.popBackStack()
+                },
+                onBack = { navController.popBackStack() }
             )
         }
         composable(Routes.FINANCE_DASHBOARD) {
