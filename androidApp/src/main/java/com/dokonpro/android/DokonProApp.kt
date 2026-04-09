@@ -2,6 +2,7 @@ package com.dokonpro.android
 
 import android.app.Application
 import com.dokonpro.shared.data.local.DatabaseDriverFactory
+import com.dokonpro.shared.data.local.SessionProvider
 import com.dokonpro.shared.data.local.TokenStorage
 import com.dokonpro.shared.di.sharedModule
 import com.dokonpro.android.viewmodel.AuthViewModel
@@ -30,13 +31,13 @@ class DokonProApp : Application() {
                     single { DatabaseDriverFactory(get()) }
                     single { TokenStorage(get()) }
                     viewModel { AuthViewModel(get(), get(), get()) }
-                    viewModel { ProductViewModel(get(), get(), get(), get(), get(), get(), "default-store") }
-                    viewModel { POSViewModel(get(), get(), get(), get(), get(), get(), get(), "default-store") }
-                    viewModel { CustomerViewModel(get(), get(), get(), get(), get(), "default-store") }
-                    viewModel { FinanceViewModel(get(), get(), get(), get(), "default-store") }
-                    viewModel { StaffViewModel(get(), get(), get(), get(), "default-store") }
-                    viewModel { ZakatViewModel(get(), get(), get(), get(), "default-store") }
-                    viewModel { SettingsViewModel(get(), get(), get(), "default-store") }
+                    viewModel { ProductViewModel(get(), get(), get(), get(), get(), get(), get<SessionProvider>().storeId) }
+                    viewModel { POSViewModel(get(), get(), get(), get(), get(), get(), get(), get<SessionProvider>().storeId) }
+                    viewModel { CustomerViewModel(get(), get(), get(), get(), get(), get<SessionProvider>().storeId) }
+                    viewModel { FinanceViewModel(get(), get(), get(), get(), get<SessionProvider>().storeId) }
+                    viewModel { StaffViewModel(get(), get(), get(), get(), get<SessionProvider>().storeId) }
+                    viewModel { ZakatViewModel(get(), get(), get(), get(), get<SessionProvider>().storeId) }
+                    viewModel { SettingsViewModel(get(), get(), get(), get<SessionProvider>().storeId) }
                 }
             )
         }
