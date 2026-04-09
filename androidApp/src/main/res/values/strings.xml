@@ -18,6 +18,9 @@
     <string name="nav_customers">Клиенты</string>
     <string name="nav_finance">Финансы</string>
     <string name="nav_settings">Настройки</string>
+    <string name="nav_home">Главная</string>
+    <string name="nav_quick_actions">Быстрые действия</string>
+    <string name="nav_management">Управление</string>
     <!-- Auth -->
     <string name="auth_subtitle">Управление магазином\nв одном приложении</string>
     <string name="auth_login_title">Вход в аккаунт</string>
@@ -150,4 +153,16 @@
     <string name="settings_store_name">Название магазина</string>
     <string name="settings_store_address">Адрес</string>
     <string name="settings_store_phone">Телефон</string>
+    <!-- Printer -->
+    <string name="printer_title">Bluetooth принтер</string>
+    <string name="printer_bt_on">Bluetooth включён</string>
+    <string name="printer_bt_off">Bluetooth выключен</string>
+    <string name="printer_saved">Сохранённый принтер</string>
+    <string name="printer_disconnect">Отключить</string>
+    <string name="printer_test">Тестовая печать</string>
+    <string name="printer_success">Печать завершена</string>
+    <string name="printer_paired_devices">Сопряжённые устройства</string>
+    <string name="printer_no_devices">Нет сопряжённых устройств</string>
+    <string name="printer_unknown">Неизвестное устройство</string>
+    <string name="printer_print_receipt">Печать чека</string>
 </resources>

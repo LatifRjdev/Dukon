@@ -18,6 +18,9 @@
     <string name="nav_customers">Мизоҷон</string>
     <string name="nav_finance">Молия</string>
     <string name="nav_settings">Танзимот</string>
+    <string name="nav_home">Асосӣ</string>
+    <string name="nav_quick_actions">Амалҳои зуд</string>
+    <string name="nav_management">Идоракунӣ</string>
     <!-- Auth -->
     <string name="auth_subtitle">Идоракунии мағоза\nдар як барнома</string>
     <string name="auth_login_title">Вуруд ба аккаунт</string>
@@ -150,4 +153,16 @@
     <string name="settings_store_name">Номи мағоза</string>
     <string name="settings_store_address">Суроға</string>
     <string name="settings_store_phone">Телефон</string>
+    <!-- Printer -->
+    <string name="printer_title">Принтери Bluetooth</string>
+    <string name="printer_bt_on">Bluetooth фаъол аст</string>
+    <string name="printer_bt_off">Bluetooth хомӯш аст</string>
+    <string name="printer_saved">Принтери нигоҳдошта</string>
+    <string name="printer_disconnect">Ҷудо кардан</string>
+    <string name="printer_test">Санҷиши чоп</string>
+    <string name="printer_success">Чоп анҷом ёфт</string>
+    <string name="printer_paired_devices">Дастгоҳҳои пайвастшуда</string>
+    <string name="printer_no_devices">Дастгоҳи пайвастшуда нест</string>
+    <string name="printer_unknown">Дастгоҳи номаълум</string>
+    <string name="printer_print_receipt">Чопи чек</string>
 </resources>
